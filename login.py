@@ -16,7 +16,8 @@ password_file.close()
 given_password = getpass.getpass("Password for {}: ".format(getpass.getuser()))
 kdf = Scrypt(salt=config["salt"].encode(), length=32, n=2**14, r=8, p=1)
 if kdf.derive(given_password.encode()) == password:
-    os.chdir(os.environ["HOME"])
+    if os.getenv("HOME") != None:
+        os.chdir(os.getenv("HOME"))
     os.system(config["shell"])
 
 else:
