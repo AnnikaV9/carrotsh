@@ -34,6 +34,8 @@ node index.js
 Available options:
  - port: The port the server should listen on.
  - shell: Path to the shell executable.
+ - shell_timeout: The max age (ms) of the spawned shell session.
+ - python_path: Path to your python interpreter.
  - salt: The password hashing salt.
 
 
