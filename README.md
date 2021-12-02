@@ -31,7 +31,7 @@ node index.js
 <br />
 
 ## Configuration
-[config.json](https://github.com/AnnikaV9/carrotsh/blob/master/config.json) should be used as the config file.
+carrotsh uses [config.json](https://github.com/AnnikaV9/carrotsh/blob/master/config.json) as the primary configuration file.
 
 Available options:
  - port: The port the server should listen on.
@@ -40,7 +40,7 @@ Available options:
  - python_path: Path to your python interpreter.
  - salt: The password hashing salt.
 
-
+<br />
 
 Setting a password:
 
