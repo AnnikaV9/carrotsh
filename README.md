@@ -40,7 +40,7 @@ Available options:
 
 Setting a password:
 
-`npm install` will run `setpass.py` initially, however you will have to run it again if you change the password salt:
+`npm install` will run `setpass.py` initially, but you will have to run it again if you change the password salt:
 ```
 python3 setpass.py
 ```
