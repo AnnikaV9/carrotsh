@@ -5,6 +5,7 @@ A simple and lightweight server that allows clients to connect and launch a shel
 
 ## Requirements
  - node.js
+ - npm
  - python
  - python-cryptography
  
