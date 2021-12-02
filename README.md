@@ -10,7 +10,7 @@ A simple and lightweight server that allows clients to connect and launch a shel
  
 <br />
  
-## Installation 
+## Installation
 ```
 # Clone the repository
 git clone https://github.com/AnnikaV9/carrotsh.git
@@ -20,6 +20,9 @@ cd carrotsh
 
 # Install the dependencies
 npm install
+
+# Start the server
+node index.js
 ```
 
 <br />
