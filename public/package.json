@@ -1,0 +1,17 @@
+{
+  "name": "carrotsh",
+  "version": "0.0.1",
+  "description": "a server that allows clients to connect and launch a shell remotely through a browser",
+  "main": "index.js",
+  "author": "AnnikaV9",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnnikaV9/carrotsh.git"
+  },
+  "dependencies": {
+    "xterm": "latest",
+    "xterm-addon-fit": "latest",
+    "xterm-addon-attach": "latest"
+  }
+}
