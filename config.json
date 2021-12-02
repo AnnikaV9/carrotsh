@@ -1,5 +1,6 @@
 {
   "port": 6060,
   "shell": "/bin/bash",
+  "python_path": "/usr/bin/python3",
   "salt": "carrots"
 }
