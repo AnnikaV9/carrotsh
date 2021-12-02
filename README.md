@@ -53,6 +53,4 @@ python3 setpass.py
 <br />
 <br />
 
-**Note:** Before using carrotsh in production, it is highly recommended to enable TLS support:
- - Use a reverse proxy like [ngnix](https://github.com/nginx/nginx)
- - Modify [index.js](https://github.com/AnnikaV9/carrotsh/blob/master/index.js) manually
+**Note:** Before using carrotsh in production, it is highly recommended to enable TLS support by using a reverse proxy like [ngnix](https://github.com/nginx/nginx).
