@@ -13,7 +13,7 @@ ws(app);
 
 app.ws("/ws", (ws) => {
   const term = pty.spawn(serverConfig["python_path"], ["login.py"], { name: "xterm-color" });
-  setTimeout(() => term.kill(), serverConfig[shell_timeout]);
+  setTimeout(() => term.kill(), serverConfig["shell_timeout"]);
   setInterval(() => {
     try{
       ws.ping("heartbeat");
