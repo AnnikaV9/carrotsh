@@ -1,5 +1,5 @@
 {
   "port": 6060,
-  "shell": "fish",
+  "shell": "/bin/bash",
   "salt": "carrots"
 }
