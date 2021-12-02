@@ -12,7 +12,7 @@ app.use("/public", express.static('public'));
 ws(app);
 
 app.ws("/ws", (ws) => {
-  const term = pty.spawn("python3", ["login.py"], { name: "xterm-color" });
+  const term = pty.spawn(serverConfig["python_path"], ["login.py"], { name: "xterm-color" });
   setTimeout(() => term.kill(), 3600000);
   setInterval(() => {
     try{
