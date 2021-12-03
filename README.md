@@ -2,7 +2,7 @@
 A simple and lightweight server that allows clients to connect and launch a shell remotely through a browser. Uses [xterm.js](https://github.com/xtermjs/xterm.js/) for the frontend and [express](https://github.com/expressjs/express) for the backend.
 
 
-![Screenshot](https://media.discordapp.net/attachments/699852562505138236/915947808006234122/Screenshot_20211202-204032_Firefox_Nightly.jpg)
+![Screenshot](https://cdn.discordapp.com/attachments/699852562505138236/916156149143842906/record1.gif)
 <br />
 
 ## Requirements
