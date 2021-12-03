@@ -1,4 +1,5 @@
-# carrotsh ![Version](https://img.shields.io/static/v1?label=version&message=0.0.1&color=red) ![License](https://img.shields.io/static/v1?label=license&message=The%20Unlicense&color=blue)
+
+# carrotsh <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=0.0.1&color=red"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue"></a>
 A simple and lightweight server that allows clients to connect and launch a shell remotely through a browser. Uses [xterm.js](https://github.com/xtermjs/xterm.js/) for the frontend and [express](https://github.com/expressjs/express) for the backend.
 
 
