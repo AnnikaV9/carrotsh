@@ -25,6 +25,12 @@ cd carrotsh
 # Install the dependencies
 npm install
 
+# Edit the configuration file
+vim config.json
+
+# Set the server password
+python3 setpass.py
+
 # Start the server and listen at the default port: 6060
 node index.js
 ```
@@ -39,17 +45,10 @@ Available options:
  - shell: Path to the shell executable. *(Default: `/bin/bash`)*
  - shell_timeout: The max age (ms) of the spawned shell session. *(Default: 3600000)*
  - python_path: Path to your python interpreter. *(Default: `/usr/bin/python3`)*
- - salt: The password hashing salt. Please change the default value. *(Default: carrots)*
+ - salt: The password hashing salt. Please change the default value. After changing, make sure to run [setpass.py](https://github.com/AnnikaV9/carrotsh/blob/master/setpass.py) again to generate a new hash. *(Default: carrots)*
  - https: Set as `true` to enable TLS. *(Default: `false`)*
  - https_options
     * path_to_cert: Path to your certificate file. *(Default: `./cert.pem`)*
     * path_to_key: Path to your key file. *(Default: `./key.pem`)*
 
 <br />
-
-Setting a password:
-
-`npm install` will run [setpass.py](https://github.com/AnnikaV9/carrotsh/blob/master/setpass.py) initially, but you will have to run it again if you change the password salt:
-```
-python3 setpass.py
-```
