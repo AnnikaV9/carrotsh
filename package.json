@@ -15,6 +15,6 @@
     "node-pty": "latest"
   },
   "scripts": {
-    "postinstall": "python3 setpass.py && cd ./public && npm install"
+    "postinstall": "cd ./public && npm install"
   }
 }
