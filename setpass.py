@@ -3,7 +3,6 @@ import getpass
 import json
 import sys
 
-print("--- Password setup for carrotsh ---\n")
 password = getpass.getpass("New password: ")
 if getpass.getpass("Confirm password: ") != password:
     print("Error: Passwords do not match.")
