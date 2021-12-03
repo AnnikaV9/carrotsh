@@ -14,7 +14,7 @@ A simple and lightweight server that allows clients to connect and launch a shel
  
 <br />
  
-## Installation
+## Installation & Usage
 ```
 # Clone the repository
 git clone https://github.com/AnnikaV9/carrotsh.git
