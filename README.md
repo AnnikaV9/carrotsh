@@ -35,15 +35,15 @@ node index.js
 carrotsh uses [config.json](https://github.com/AnnikaV9/carrotsh/blob/master/config.json) as the primary configuration file.
 
 Available options:
- - port: The port the server should listen on. (Default: 6060)
- - shell: Path to the shell executable. (Default: `/bin/bash`)
- - shell_timeout: The max age (ms) of the spawned shell session. (Default: 3600000)
- - python_path: Path to your python interpreter. (Default: `/usr/bin/python3`)
- - salt: The password hashing salt. Please change the default value. (Default: carrots)
- - https: Set as `true` to enable TLS. (Default: false)
+ - port: The port the server should listen on. *(Default: 6060)*
+ - shell: Path to the shell executable. *(Default: `/bin/bash`)*
+ - shell_timeout: The max age (ms) of the spawned shell session. *(Default: 3600000)*
+ - python_path: Path to your python interpreter. *(Default: `/usr/bin/python3`)*
+ - salt: The password hashing salt. Please change the default value. *(Default: carrots)*
+ - https: Set as `true` to enable TLS. *(Default: `false`)*
  - https_options
-    * path_to_cert: Path to your certificate file. (Default: `./cert.pem`)
-    * path_to_key: Path to your key file. (Default: `./key.pem`)
+    * path_to_cert: Path to your certificate file. *(Default: `./cert.pem`)*
+    * path_to_key: Path to your key file. *(Default: `./key.pem`)*
 
 <br />
 
