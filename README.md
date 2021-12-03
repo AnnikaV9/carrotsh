@@ -54,6 +54,6 @@ Available options:
 <br />
 
 ## Contributing
-Feel like something can be improved? Found a bug? Open an issue with the appropriate tags.
+Feel like something can be improved? Found a bug? Open an issue!
 
 Want to contribute directly? Just make a pull request!
