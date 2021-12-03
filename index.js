@@ -1,30 +1,44 @@
 const fs = require("fs");
 const express = require("express");
-const ws = require("express-ws");
+const http = require("http");
+const https = require("https");
+const ws = require("ws");
 const pty = require("node-pty");
 
 const indexPage = fs.readFileSync("index.html");
 const serverConfig = JSON.parse(fs.readFileSync("config.json"));
 
 const app = express();
+var server;
+
+if (serverConfig["https"]) {
+  server = new https.createServer({
+    cert: fs.readFileSync(serverConfig["https_options"]["path_to_cert"]),
+    key: fs.readFileSync(serverConfig["https_options"]["path_to_key"])
+  }, app);
+}
+else {
+  server = new http.createServer(app);
+}
+
+const WebsocketServer = new ws.Server({server: server, location: "/ws/"});
 
 app.use("/public", express.static('public'));
-ws(app);
 
-app.ws("/ws", (ws) => {
+WebsocketServer.on("connection", (connection) => {
   const term = pty.spawn(serverConfig["python_path"], ["login.py"], { name: "xterm-color" });
   setTimeout(() => term.kill(), serverConfig["shell_timeout"]);
   setInterval(() => {
     try{
-      ws.ping("heartbeat");
+      connection.ping("heartbeat");
     } catch (err) {}
   }, 15000);
   term.on("data", (data) => {
     try {
-      ws.send(data);
+      connection.send(data);
     } catch (err) {}
   });
-  ws.on("message", (data) => term.write(data));
+  connection.on("message", (data) => term.write(data));
 });
 
 app.get("/", (req, res) => {
@@ -32,4 +46,4 @@ app.get("/", (req, res) => {
   res.send(indexPage);
 });
 
-app.listen(serverConfig["port"], "0.0.0.0");
+server.listen(serverConfig["port"]);
