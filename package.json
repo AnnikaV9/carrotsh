@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "express": "latest",
+    "ws": "latest",
     "node-pty": "latest"
   },
   "scripts": {
