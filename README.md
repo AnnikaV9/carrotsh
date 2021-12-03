@@ -52,3 +52,8 @@ Available options:
     * path_to_key: Path to your key file. *(Default: `./key.pem`)*
 
 <br />
+
+## Contributing
+Feel like something can be improved? Found a bug? Open an issue with the appropriate tags.
+
+Want to contribute directly? Just make a pull request!
