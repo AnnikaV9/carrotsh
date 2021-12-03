@@ -16,4 +16,4 @@ else:
     password_file = open("shadow", "wb")
     password_file.write(kdf.derive(password.encode()))
     password_file.close()
-    print("Password saved.\n")
+    print("Password saved.")
