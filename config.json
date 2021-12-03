@@ -3,5 +3,10 @@
   "shell": "/bin/bash",
   "shell_timeout": 3600000,
   "python_path": "/usr/bin/python3",
-  "salt": "carrots"
+  "salt": "carrots",
+  "https": false,
+  "https_options": {
+    "path_to_cert": "./cert.pem",
+    "path_to_key": "./key.pem"
+  }
 }
