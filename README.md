@@ -1,5 +1,5 @@
 
-# carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=0.1.0&color=red"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue"></a>
+# carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=0.1.1&color=red"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue"></a>
 A simple and lightweight server that allows clients to connect and launch a shell remotely through a browser. Uses [xterm.js](https://github.com/xtermjs/xterm.js/) for the frontend.
 
 
@@ -45,6 +45,9 @@ Available options:
  - shell: Path to the shell executable. *(Default: `/bin/bash`)*
  - shell_timeout: The max age (ms) of the spawned shell session. *(Default: 3600000)*
  - python_path: Path to your python interpreter. *(Default: `/usr/bin/python3`)*
+ - password_auth: Set as `false` to disable authentication. *(Default: `true`)*
+ - password_auth_options
+    * salt: The salt used when hashing the password for storage. Please change the default. *(Default: carrots)*
  - salt: The password hashing salt. Please change the default value. After changing, make sure to run [setpass.py](https://github.com/AnnikaV9/carrotsh/blob/master/setpass.py) again to generate a new hash. *(Default: carrots)*
  - https: Set as `true` to enable TLS/SSL. *(Default: `false`)*
  - https_options
