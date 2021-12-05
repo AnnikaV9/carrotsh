@@ -31,7 +31,7 @@ vim config.json
 # Set the server password
 python3 setpass.py
 
-# Start the server and listen at the default port: 6060
+# Start the server
 node index.js
 ```
 
