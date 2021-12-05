@@ -47,8 +47,7 @@ Available options:
  - python_path: Path to your python interpreter. *(Default: `/usr/bin/python3`)*
  - password_auth: Set as `false` to disable authentication. *(Default: `true`)*
  - password_auth_options
-    * salt: The salt used when hashing the password for storage. Please change the default. *(Default: carrots)*
- - salt: The password hashing salt. Please change the default value. After changing, make sure to run [setpass.py](https://github.com/AnnikaV9/carrotsh/blob/master/setpass.py) again to generate a new hash. *(Default: carrots)*
+    * salt: The salt used when hashing the password for storage. Please change the default value. After changing, make sure to run [setpass.py](https://github.com/AnnikaV9/carrotsh/blob/master/setpass.py) again to generate a new hash.*(Default: carrots)*
  - https: Set as `true` to enable TLS/SSL. *(Default: `false`)*
  - https_options
     * path_to_cert: Path to your certificate file. *(Default: `./cert.pem`)*
