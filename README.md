@@ -4,6 +4,7 @@ A simple and lightweight server that allows clients to connect and launch a shel
 
 
 ![Screenshot](https://cdn.discordapp.com/attachments/699852562505138236/916156149143842906/record1.gif)
+
 <br />
 
 ## Requirements
@@ -11,6 +12,7 @@ A simple and lightweight server that allows clients to connect and launch a shel
  - npm
  - python
  - python-cryptography
+ - make & g++ (For compiling node-pty when running `npm install`)
  
 <br />
  
