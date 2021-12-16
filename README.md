@@ -55,6 +55,12 @@ Available options:
 
 <br />
 
+## Todo
+- Implement server logging
+- Allow font/theme customization client-side, and setting of defaults server-side
+
+<br />
+
 ## Contributing
 Feel like something can be improved? Found a bug? Open an issue!
 
