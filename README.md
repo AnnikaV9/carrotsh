@@ -43,17 +43,17 @@ node index.js
 carrotsh uses [config.json](https://github.com/AnnikaV9/carrotsh/blob/master/config.json) as the primary configuration file.
 
 Available options:
- - port: The port the server should listen on. *(Default: 6060)*
- - shell: Path to the shell executable. *(Default: `/bin/bash`)*
- - shell_timeout: The max age (ms) of the spawned shell session. *(Default: 3600000)*
- - python_path: Path to your python interpreter. *(Default: `/usr/bin/python3`)*
- - password_auth: Set as `false` to disable authentication. *(Default: `true`)*
- - password_auth_options
-    * salt: The salt used when hashing the password for storage. Please change the default value. After changing, make sure to run [setpass.py](https://github.com/AnnikaV9/carrotsh/blob/master/setpass.py) again to generate a new hash.*(Default: carrots)*
- - https: Set as `true` to enable TLS/SSL. *(Default: `false`)*
- - https_options
-    * path_to_cert: Path to your certificate file. *(Default: `./cert.pem`)*
-    * path_to_key: Path to your key file. *(Default: `./key.pem`)*
+| Option |Description | Type | Default |
+|--|--|--|--|
+| port | The port the server should listen for requests on | integer | 6060 |
+| shell | Path to the shell executable. This does not actually have to be a valid shell, any program can be used, interactive or not. For example, to launch a disposable container with podman, you could set this as `podman run --rm -it myimage` | string | /bin/bash |
+| shell_timeout | The max age (milliseconds) of the spawned shell session | integer | 3600000 |
+| python_path | Path to your python interpreter, which will be used to run [login.py](https://github.com/AnnikaV9/carrotsh/blob/master/login.py) | string | /usr/bin/python3 |
+| password_auth | Enables or disables password authentication | string (true/false) | true |
+| salt (Under password_auth_options) | The salt used when hashing the password for storage. Please change the default value. After changing, make sure to run [setpass.py](https://github.com/AnnikaV9/carrotsh/blob/master/setpass.py) again to generate a new hash | string | carrots |
+| https | Enables or disables TLS/SSL | string (true/false) | false |
+| path_to_cert (Under https_options) | Path to your certificate file | string | ./cert.pem |
+| path_to_key (Under https_options) | Path to your key file | string | ./key.pem |
 
 <br />
 
