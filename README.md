@@ -49,9 +49,10 @@ Available options:
 | shell | Path to the shell executable. This does not actually have to be a valid shell, any program can be used, interactive or not. For example, to launch a disposable container with podman, you could set this as `podman run --rm -it myimage` | string | /bin/bash |
 | shell_timeout | The max age (milliseconds) of the spawned shell session | integer | 3600000 |
 | python_path | Path to your python interpreter, which will be used to run [login.py](https://github.com/AnnikaV9/carrotsh/blob/master/login.py) | string | /usr/bin/python3 |
-| password_auth | Enables or disables password authentication | string (true/false) | true |
+| password_auth | Enables or disables password authentication | boolean | true |
 | salt (Under password_auth_options) | The salt used when hashing the password for storage. Please change the default value. After changing, make sure to run [setpass.py](https://github.com/AnnikaV9/carrotsh/blob/master/setpass.py) again to generate a new hash | string | carrots |
-| https | Enables or disables TLS/SSL | string (true/false) | false |
+| show_username (Under password_auth_options) | Shows or hides username in the login prompt | boolean | true |
+| https | Enables or disables TLS/SSL | boolean | false |
 | path_to_cert (Under https_options) | Path to your certificate file | string | ./cert.pem |
 | path_to_key (Under https_options) | Path to your key file | string | ./key.pem |
 
