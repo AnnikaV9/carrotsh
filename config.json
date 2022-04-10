@@ -5,7 +5,8 @@
   "python_path": "/usr/bin/python3",
   "password_auth": true,
   "password_auth_options": {
-    "salt": "carrots"
+    "salt": "carrots",
+    "show_username": true
   },
   "https": false,
   "https_options": {

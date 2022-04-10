@@ -18,8 +18,13 @@ else:
     password_file = open("shadow", "rb")
     password = password_file.read()
     password_file.close()
+    if config["password_auth_options"]["show_username"]:
+        prompt = "Password for {}: ".format(getpass.getuser())
+        
+    else:
+        prompt = "Password: "
 
-    given_password = getpass.getpass("Password for {}: ".format(getpass.getuser()))
+    given_password = getpass.getpass(prompt)
     kdf = Scrypt(salt=config["password_auth_options"]["salt"].encode(), length=32, n=2**14, r=8, p=1)
     if kdf.derive(given_password.encode()) == password:
         if os.getenv("HOME") != None:
