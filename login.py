@@ -19,7 +19,7 @@ try:
         if os.getenv("HOME") != None:
             os.chdir(os.getenv("HOME"))
 
-        logger.info("Successful login")
+        logger.info("({}) Successful login".format(sys.argv[1]))
         os.system(config["shell"])
 
     else:    
@@ -37,7 +37,7 @@ try:
         
         except (EOFError, KeyboardInterrupt):
             print("Login cancelled.")
-            logger.info("Cancelled login")
+            logger.info("({}) Cancelled login".format(sys.argv[1]))
             sys.exit()
 
         kdf = Scrypt(salt=config["password_auth_options"]["salt"].encode(), length=32, n=2**14, r=8, p=1)
@@ -45,13 +45,13 @@ try:
             if os.getenv("HOME") != None:
                 os.chdir(os.getenv("HOME"))
 
-            logger.info("Successful login")
+            logger.info("({}) Successful login".format(sys.argv[1]))
             os.system(config["shell"])
 
         else:
             time.sleep(3)
             print("Authentication failed.")
-            logger.info("Failed login, incorrect password")
+            logger.info("({}) Failed login, incorrect password".format(sys.argv[1]))
             sys.exit()
 
 except SystemExit:
