@@ -26,6 +26,8 @@ const WebsocketServer = new ws.Server({server: server, location: "/ws/"});
 app.use("/public", express.static('public'));
 
 WebsocketServer.on("connection", (connection, req) => {
+  var dateTime = new Date()
+  console.log(dateTime, "- Connection from ", req.socket.remoteAddress)
   const term = pty.spawn(serverConfig["python_path"], ["login.py", req.socket.remoteAddress], { name: "xterm-color" });
   setTimeout(() => term.kill(), serverConfig["shell_timeout"]);
   setInterval(() => {
@@ -47,3 +49,4 @@ app.get("/", (req, res) => {
 });
 
 server.listen(serverConfig["port"]);
+console.log("carrotsh v0.3.1 - listening on port %s\n---", serverConfig["port"]);
