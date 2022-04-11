@@ -25,8 +25,8 @@ const WebsocketServer = new ws.Server({server: server, location: "/ws/"});
 
 app.use("/public", express.static('public'));
 
-WebsocketServer.on("connection", (connection) => {
-  const term = pty.spawn(serverConfig["python_path"], ["login.py"], { name: "xterm-color" });
+WebsocketServer.on("connection", (connection, req) => {
+  const term = pty.spawn(serverConfig["python_path"], ["login.py", req.socket.remoteAddress], { name: "xterm-color" });
   setTimeout(() => term.kill(), serverConfig["shell_timeout"]);
   setInterval(() => {
     try{
