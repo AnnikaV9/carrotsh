@@ -1,3 +1,7 @@
+/* v0.3.2 */
+
+console.log("carrotsh v0.3.2\n");
+
 const fs = require("fs");
 const express = require("express");
 const http = require("http");
@@ -19,6 +23,7 @@ if (serverConfig["https"]) {
 }
 else {
   server = new http.createServer(app);
+  console.log("Warning: HTTPS is disabled. Your connection will not be secure.");
 }
 
 const WebsocketServer = new ws.Server({server: server, location: "/ws/"});
@@ -49,4 +54,4 @@ app.get("/", (req, res) => {
 });
 
 server.listen(serverConfig["port"]);
-console.log("carrotsh v0.3.1 - listening on port %s\n---", serverConfig["port"]);
+console.log("Listening on port %s\n---", serverConfig["port"]);
