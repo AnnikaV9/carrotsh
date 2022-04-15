@@ -1,1 +1,6 @@
-
+{
+    "blocklist": [
+        "ExampleAddress1",
+        "ExampleAddress2"
+    ]
+}
