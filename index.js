@@ -1,5 +1,3 @@
-/* v0.4.0 */
-
 console.log("carrotsh v0.3.2\n");
 
 const fs = require("fs");
