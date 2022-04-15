@@ -27,3 +27,5 @@ user_blocklist["blocklist"].extend(new_blocklist)
 user_blocklist_file = open("user_blocklist.json", "w")
 json.dump(user_blocklist, user_blocklist_file, indent=4)
 user_blocklist_file.close()
+
+print("Copied {} addresses from {}".format(len(new_blocklist), sys.argv[1]))
