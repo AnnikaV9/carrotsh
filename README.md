@@ -57,14 +57,14 @@ Available options:
 | path_to_key (Under https_options) | Path to your key file | string | ./key.pem |
 | blocklist_shadow_mode | Shadow mode does not reveal if the client is blocked when they connect. It will spawn a fake login prompt, that will fail to authenticate even if the correct password is given | boolean | false |
 | auto_blocklist | Automatically block and unblock addresses depending on the configuration. The manual blocklist ([user_blocklist.json](https://github.com/AnnikaV9/carrotsh/blob/master/user_blocklist.json)) will override the auto blocklist | boolean | true |
-| max_incorrect_attempts | The maximum number of incorrect password attempts a client can make before their address is added to the auto blocklist | integer | 5 |
-| unblock_after_minutes | The number of minutes to wait before unblocking an address in the auto blocklist | integer | 10080 |
+| max_incorrect_attempts (Under auto_blocklist_options) | The maximum number of incorrect password attempts a client can make before their address is added to the auto blocklist | integer | 5 |
+| unblock_after_minutes (Under auto_blocklist_options) | The number of minutes to wait before unblocking an address in the auto blocklist | integer | 10080 |
 
 <br />
 
 ## Todo
-- Implement server logging
-- Allow font/theme customization client-side, and setting of defaults server-side
+- Implement a launcher system that checks configuration and blocklists for syntax errors before running the server
+- Create a CLI program that can connect directly to carrotsh's websocket backend for an ssh-like experience
 
 <br />
 
