@@ -1,6 +1,6 @@
 
-# carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=0.3.2&color=red"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue"></a>
-A simple and lightweight server that allows clients to connect and launch a shell remotely through a browser. Uses [xterm.js](https://github.com/xtermjs/xterm.js/) for the frontend.
+# carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=0.4.0&color=red"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue"></a>
+A lightweight server that allows clients to connect securely and launch a shell or program remotely through a browser. Uses [xterm.js](https://github.com/xtermjs/xterm.js/) for the frontend.
 
 
 ![Screenshot](https://raw.githubusercontent.com/AnnikaV9/carrotsh/master/preview.gif)
@@ -47,7 +47,7 @@ Available options:
 |--|--|--|--|
 | port | The port the server should listen for requests on | integer | 6060 |
 | shell | Path to the shell executable. This does not actually have to be a valid shell, any program can be used, interactive or not. For example, to launch a disposable container with podman, you could set this as `podman run --rm -it myimage` | string | /bin/bash |
-| shell_timeout | The max age (milliseconds) of the spawned shell session | integer | 3600000 |
+| shell_timeout_milliseconds | The max age (milliseconds) of the spawned shell session | integer | 3600000 |
 | python_path | Path to your python interpreter, which will be used to run [login.py](https://github.com/AnnikaV9/carrotsh/blob/master/login.py) | string | /usr/bin/python3 |
 | password_auth | Enables or disables password authentication | boolean | true |
 | salt (Under password_auth_options) | The salt used when hashing the password for storage. Please change the default value. After changing, make sure to run [setpass.py](https://github.com/AnnikaV9/carrotsh/blob/master/setpass.py) again to generate a new hash | string | carrots |
@@ -55,6 +55,10 @@ Available options:
 | https | Enables or disables TLS/SSL | boolean | false |
 | path_to_cert (Under https_options) | Path to your certificate file | string | ./cert.pem |
 | path_to_key (Under https_options) | Path to your key file | string | ./key.pem |
+| blocklist_shadow_mode | Shadow mode does not reveal if the client is blocked when they connect. It will spawn a fake login prompt, that will fail to authenticate even if the correct password is given | boolean | false |
+| auto_blocklist | Automatically block and unblock addresses depending on the configuration. The manual blocklist ([user_blocklist.json](https://github.com/AnnikaV9/carrotsh/blob/master/user_blocklist.json)) will override the auto blocklist | boolean | true |
+| max_incorrect_attempts | The maximum number of incorrect password attempts a client can make before their address is added to the auto blocklist | integer | 5 |
+| unblock_after_minutes | The number of minutes to wait before unblocking an address in the auto blocklist | integer | 10080 |
 
 <br />
 
