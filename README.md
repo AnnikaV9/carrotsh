@@ -6,8 +6,20 @@ A lightweight server that allows clients to connect securely and launch a shell 
 ![Screenshot](https://raw.githubusercontent.com/AnnikaV9/carrotsh/master/preview.gif)
 
 <br />
+<br />
 
-## Requirements
+## Table of Contents
+- [Requirements](#requirements)
+- [Installation & Usage](#installation)
+- [Configuration](#configuration)
+- [Reverse proxies](#reverseproxies)
+- [Todo](#todo)
+- [Contributing](#contributing)
+
+<br />
+<br />
+
+## Requirements <a name="requirements"></a>
  - node.js
  - npm
  - python
@@ -15,8 +27,9 @@ A lightweight server that allows clients to connect securely and launch a shell 
  - make & g++ (GNU/Linux) or Xcode (MacOS) - (For compiling node-pty when running `npm install`)
  
 <br />
+<br />
  
-## Installation & Usage
+## Installation & Usage <a name="installation"></a>
 ```
 # Clone the repository
 git clone https://github.com/AnnikaV9/carrotsh.git
@@ -38,8 +51,9 @@ node index.js
 ```
 
 <br />
+<br />
 
-## Configuration
+## Configuration <a name="configuration"></a>
 carrotsh uses [config.json](https://github.com/AnnikaV9/carrotsh/blob/master/config.json) as the primary configuration file.
 
 Available options:
@@ -61,14 +75,22 @@ Available options:
 | unblock_after_minutes (Under auto_blocklist_options) | The number of minutes to wait before unblocking an address in the auto blocklist | integer | 10080 |
 
 <br />
+<br />
 
-## Todo
+## Reverse proxies <a name="reverseproxies"></a>
+carrotsh currently does not have proper support for use with reverse proxies like nginx. It may work, but the auto blocklist may end up blocking everyone from connecting since it only sees the proxy's address. Using X-Forwarded-For requires a significant change to the code, as the header can be easily spoofed when connecting directly past the proxy. Until a proper solution is implemented, it is not recommended to run carrotsh behind a reverse proxy. If you do have a working solution, feel free to [contribute](#contributing).
+
+<br />
+<br />
+
+## Todo <a name="todo"></a>
 - Implement a launcher system that checks configuration and blocklists for syntax errors before running the server
 - Create a CLI program that can connect directly to carrotsh's websocket backend for an ssh-like experience
 
 <br />
+<br />
 
-## Contributing
+## Contributing <a name="contributing"></a>
 Feel like something can be improved? Found a bug? Open an issue!
 
 Want to contribute directly? Feel free to make a pull request!
