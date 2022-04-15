@@ -1,5 +1,3 @@
-# v0.4.0
-
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 import getpass
 import json

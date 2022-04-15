@@ -1,5 +1,3 @@
-# v0.4.0
-
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 import os
 import getpass
@@ -59,7 +57,7 @@ try:
         if unblock:
             del auto_blocklist["blocklist"][entry]
             auto_blocklist_file = open("auto_blocklist.json", "w")
-            json.dump(auto_blocklist, auto_blocklist_file)
+            json.dump(auto_blocklist, auto_blocklist_file, indent=4)
             auto_blocklist_file.close()
                 
     for entry in user_blocklist["blocklist"]:
@@ -117,7 +115,7 @@ try:
                 else:
                     auto_blocklist["attempt_tracker"][client_remote_address] = 1
                 auto_blocklist_file = open("auto_blocklist.json", "w")
-                json.dump(auto_blocklist, auto_blocklist_file)
+                json.dump(auto_blocklist, auto_blocklist_file, indent=4)
                 auto_blocklist_file.close()
 
             logger.info("({}) Failed login, incorrect password".format(client_remote_address))
