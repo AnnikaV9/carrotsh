@@ -12,6 +12,7 @@ A lightweight server that allows clients to connect securely and launch a shell 
 - [Requirements](#requirements)
 - [Installation & Usage](#installation)
 - [Configuration](#configuration)
+- [Blocklists](#blocklists)
 - [Reverse proxies](#reverseproxies)
 - [Todo](#todo)
 - [Contributing](#contributing)
@@ -70,9 +71,26 @@ Available options:
 | path_to_cert (Under https_options) | Path to your certificate file | string | ./cert.pem |
 | path_to_key (Under https_options) | Path to your key file | string | ./key.pem |
 | blocklist_shadow_mode | Shadow mode does not reveal if the client is blocked when they connect. It will spawn a fake login prompt, that will fail to authenticate even if the correct password is given | boolean | false |
-| auto_blocklist | Automatically block and unblock addresses depending on the configuration. The manual blocklist ([user_blocklist.json](https://github.com/AnnikaV9/carrotsh/blob/master/user_blocklist.json)) will override the auto blocklist | boolean | true |
+| auto_blocklist | Automatically add and remove addresses to the auto blocklist depending on the configuration. | boolean | true |
 | max_incorrect_attempts (Under auto_blocklist_options) | The maximum number of incorrect password attempts a client can make before their address is added to the auto blocklist | integer | 5 |
 | unblock_after_minutes (Under auto_blocklist_options) | The number of minutes to wait before unblocking an address in the auto blocklist | integer | 10080 |
+
+<br />
+<br />
+
+## Blocklists <a name="blocklists"></a>
+Blocklists allow you to prevent clients with blocked remote addresses from ever reaching the login prompt. There are two blocklists carrotsh uses:
+
+#### [auto_blocklist.json](https://github.com/AnnikaV9/carrotsh/blob/master/auto_blocklist.json)
+The auto blocklist is used when `auto_blocklist` in the configuration is set to true. It will automatically add addresses when clients perform a set number of incorrect password attempts (Default: 5), and remove them from the list after a set period (Default: 1 week). The auto blocklist should only be modified if there are false positives. (eg. You get yourself blocked after entering the incorrect password)
+
+#### [user_blocklist.json](https://github.com/AnnikaV9/carrotsh/blob/master/user_blocklist.json)
+
+The user blocklist is for you to edit and add addresses manually. For a small number of addresses, editing the blocklist directly should be fine. For larger lists, you can use [blocklist_install.py]():
+```
+python3 blocklist_install.py /path/to/large/list
+```
+This will automatically format and append the addresses to the user blocklist, removing any `#` comments.
 
 <br />
 <br />
