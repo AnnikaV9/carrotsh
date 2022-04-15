@@ -1,4 +1,4 @@
-/* v0.3.2 */
+/* v0.4.0 */
 
 console.log("carrotsh v0.3.2\n");
 
@@ -23,7 +23,7 @@ if (serverConfig["https"]) {
 }
 else {
   server = new http.createServer(app);
-  console.log("Warning: HTTPS is disabled. Your connection will not be secure.");
+  console.log("Warning: HTTPS is disabled. Connections to this instance will not be secure.");
 }
 
 const WebsocketServer = new ws.Server({server: server, location: "/ws/"});
@@ -34,7 +34,7 @@ WebsocketServer.on("connection", (connection, req) => {
   var dateTime = new Date()
   console.log(dateTime, "- Connection from ", req.socket.remoteAddress)
   const term = pty.spawn(serverConfig["python_path"], ["login.py", req.socket.remoteAddress], { name: "xterm-color" });
-  setTimeout(() => term.kill(), serverConfig["shell_timeout"]);
+  setTimeout(() => term.kill(), serverConfig["shell_timeout_milliseconds"]);
   setInterval(() => {
     try{
       connection.ping("heartbeat");
