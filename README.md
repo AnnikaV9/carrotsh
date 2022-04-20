@@ -110,7 +110,7 @@ Available options:
 <br />
 
 ## Encryption <a name="encryption"></a>
-carrotsh requires proper usage and configuration in order to be secure. Make sure to setup https, so connections are encrypted and cannot be sniffed. Here's an example process of creating a self-signed ssl certificate:
+carrotsh requires proper usage and configuration in order to be secure. Make sure to set up https, so connections are encrypted and cannot be sniffed. Here's an example process of creating a self-signed ssl certificate:
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.pem
 ```
@@ -125,7 +125,7 @@ Blocklists allow you to prevent clients with blocked remote addresses from ever 
 #### [auto_blocklist.json](https://github.com/AnnikaV9/carrotsh/blob/master/blocklists/auto_blocklist.json)
 The auto blocklist is used when `auto_blocklist` in the configuration is set to true. It will automatically add addresses when clients perform a set number of incorrect password attempts (Default: 5), and remove them from the list after a set period (Default: 1 week). The auto blocklist should only be modified if there are false positives. (eg. You get yourself blocked after entering the incorrect password)
 
-To clear the auto blocklist, run:
+To clear the auto blocklist:
 ```
 python3 carrotsh.py clear-auto-blocklist
 ```
@@ -140,9 +140,14 @@ python3 carrotsh.py add-blocklist-address <address>
 ```
 To add a list with multiple addresses:
 ```
-python3 blocklist_install.py /path/to/list
+python3 carrotsh.py install-blocklist </path/to/list>
 ```
-This will append the addresses in the listt to the user blocklist, removing any `#` comments.
+This will append the addresses in the list to the user blocklist, removing any `#` comments.
+
+The user blocklist can be cleared the same way as the auto blocklist:
+```
+python3 carrotsh.py clear-user-blocklist
+```
 
 <br />
 <br />
