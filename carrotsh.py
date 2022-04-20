@@ -26,7 +26,7 @@ commands = [
     "version",
     "start",
     "stop",
-    "status"
+    "status",
     "setpass",
     "clear-auto-blocklist",
     "clear-user-blocklist",
