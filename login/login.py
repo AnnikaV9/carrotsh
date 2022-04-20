@@ -6,7 +6,7 @@ import json
 import time
 import sys
 
-logging.basicConfig(format="%(asctime)s - %(message)s", filename="logins.log", filemode="a", level=logging.INFO)
+logging.basicConfig(format="%(asctime)s - %(message)s", filename="login/logins.log", filemode="a", level=logging.INFO)
 logger = logging.getLogger()
 
 try:
@@ -14,11 +14,11 @@ try:
     config = json.load(config_file)
     config_file.close()
         
-    user_blocklist_file = open("user_blocklist.json", "r")
+    user_blocklist_file = open("blocklists/user_blocklist.json", "r")
     user_blocklist = json.load(user_blocklist_file)
     user_blocklist_file.close()
 
-    auto_blocklist_file = open("auto_blocklist.json", "r")
+    auto_blocklist_file = open("blocklists/auto_blocklist.json", "r")
     auto_blocklist = json.load(auto_blocklist_file)
     auto_blocklist_file.close()
 
@@ -56,7 +56,7 @@ try:
         
         if unblock:
             del auto_blocklist["blocklist"][entry]
-            auto_blocklist_file = open("auto_blocklist.json", "w")
+            auto_blocklist_file = open("blocklists/auto_blocklist.json", "w")
             json.dump(auto_blocklist, auto_blocklist_file, indent=4)
             auto_blocklist_file.close()
                 
@@ -82,7 +82,7 @@ try:
         os.system(config["shell"])
 
     else:    
-        password_file = open("shadow", "rb")
+        password_file = open("login/password", "rb")
         password = password_file.read()
         password_file.close()
 
@@ -114,7 +114,7 @@ try:
                 
                 else:
                     auto_blocklist["attempt_tracker"][client_remote_address] = 1
-                auto_blocklist_file = open("auto_blocklist.json", "w")
+                auto_blocklist_file = open("blocklists/auto_blocklist.json", "w")
                 json.dump(auto_blocklist, auto_blocklist_file, indent=4)
                 auto_blocklist_file.close()
 

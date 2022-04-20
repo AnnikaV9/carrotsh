@@ -1,6 +1,6 @@
 {
   "name": "carrotsh",
-  "version": "0.4.1",
+  "version": "1.0.0",
   "description": "a server that allows clients to connect and launch a shell remotely through a browser",
   "main": "index.js",
   "author": "AnnikaV9",
@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "latest",
     "ws": "latest",
-    "node-pty": "latest"
+    "node-pty": "latest",
+    "pm2": "latest"
   },
   "scripts": {
     "postinstall": "cd ./public && npm install"

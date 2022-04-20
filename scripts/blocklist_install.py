@@ -18,13 +18,13 @@ if len(to_remove) > 0:
 
 new_blocklist.remove("")
 
-user_blocklist_file = open("user_blocklist.json", "r")
+user_blocklist_file = open("blocklists/user_blocklist.json", "r")
 user_blocklist = json.load(user_blocklist_file)
 user_blocklist_file.close()
 
 user_blocklist["blocklist"].extend(new_blocklist)
 
-user_blocklist_file = open("user_blocklist.json", "w")
+user_blocklist_file = open("blocklists/user_blocklist.json", "w")
 json.dump(user_blocklist, user_blocklist_file, indent=4)
 user_blocklist_file.close()
 

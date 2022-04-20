@@ -13,7 +13,7 @@ else:
     config = json.load(config_file)
     config_file.close()
     kdf = Scrypt(salt=config["password_auth_options"]["salt"].encode(), length=32, n=2**14, r=8, p=1)
-    password_file = open("shadow", "wb")
+    password_file = open("login/password", "wb")
     password_file.write(kdf.derive(password.encode()))
     password_file.close()
     print("Password saved.")
