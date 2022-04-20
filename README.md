@@ -71,6 +71,7 @@ Commands:
 version                               output the version information
 start                                 run a syntax check and start the carrosh server
 stop                                  stop the carrotsh server
+status                                show the current status of the server
 setpass                               set the server password
 clear-auto-blocklist                  clear the auto blocklist
 clear-user-blocklist                  clear the user blocklist
