@@ -1,2 +1,3 @@
 node_modules/
-shadow
+login/password
+package-lock.json
