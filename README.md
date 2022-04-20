@@ -79,13 +79,13 @@ install-blocklist </path/to/list>     copy addresses in a file to the user block
 config-dump                           output all configuration options to the terminal
 
 ```
-Note: Do not run carrotsh as root/admin. It is unnecessary and only makes carrotsh less secure.
+Note: Do not run carrotsh as root/admin. It is unnecessary and only reduces security.
 
 <br />
 <br />
 
 ## Configuration <a name="configuration"></a>
-carrotsh uses [config.json](https://github.com/AnnikaV9/carrotsh/blob/master/config.json) as the primary configuration file.
+[config.json](https://github.com/AnnikaV9/carrotsh/blob/master/config.json) is the primary configuration file.
 
 Available options:
 | Option |Description | Type | Default |
@@ -113,7 +113,7 @@ carrotsh requires proper usage and configuration in order to be secure. Make sur
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.pem
 ```
-And then add the two files to carrotsh's [configuration](#configuration).
+And then add the two files to the [configuration](#configuration).
 
 <br />
 <br />
