@@ -10,7 +10,7 @@ A lightweight server that allows clients to connect securely and launch a shell 
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Requirements](#requirements)
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Configuration](#configuration)
@@ -25,21 +25,24 @@ A lightweight server that allows clients to connect securely and launch a shell 
 ## Introduction <a name="introduction"></a>
 carrotsh is a lightweight and secure remote access server that uses the [websocket protocol](https://en.wikipedia.org/wiki/WebSocket), with full https support for encrypted connections. It aims to provide an ssh-like experience, but through a browser. The backend primarily runs on node.js, while the login manager and various scripts use python. [xterm.js](https://github.com/xtermjs/xterm.js/) is used as the frontend terminal. No installation of extensions or userscripts is necessary on the client side to access a carrotsh instance, only a modern browser with javascript support is required.
 
-Currently supported operating systems:
+<br />
+<br />
+
+## Prerequisites <a name="prerequisites"></a>
+
+Supported operating systems:
  - macOS (Tested on Big Sur)
  - GNU/Linux (Tested on Arch & Debian)
  - musl/Linux (Tested on Alpine Linux)
  - Android (Tested on Android 11 & 12 using [Termux](https://github.com/termux/termux-app))
 
-<br />
-<br />
 
-## Requirements <a name="requirements"></a>
+Required software:
  - node.js
  - npm
  - python
  - python-cryptography
- - make & g++ (GNU/Linux) or Xcode (MacOS) - (For compiling node-pty when running `npm install`)
+ - make & g++ (Linux, Android) or Xcode (MacOS) - (For compiling node-pty when running `npm install`)
  
 <br />
 <br />
