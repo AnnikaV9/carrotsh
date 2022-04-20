@@ -5,15 +5,12 @@ import os
 help_message = """
 Usage: python3 carrotsh.py <COMMAND> [args]
 
-
-A CLI wrapper for carrotsh scripts
-
-
 Commands:
 
-version                               output the version
+version                               output the version information
 start                                 run a syntax check and start the carrosh server
 stop                                  stop the carrotsh server
+status                                show the current status of the server
 setpass                               set the server password
 clear-auto-blocklist                  clear the auto blocklist
 clear-user-blocklist                  clear the user blocklist
@@ -29,12 +26,12 @@ commands = [
     "version",
     "start",
     "stop",
+    "status"
     "setpass",
     "clear-auto-blocklist",
     "clear-user-blocklist",
     "add-blocklist-address",
     "install-blocklist",
-    "config-set",
     "config-dump"
 ]
 
@@ -75,6 +72,9 @@ elif command == "start":
 
 elif command == "stop":
     os.system("node_modules/pm2/bin/pm2 delete carrotsh")
+
+elif command == "status":
+    os.system("node_modules/pm2/bin/pm2 info carrotsh")
 
 elif command == "setpass":
     os.system("{} scripts/setpass.py".format(config["python_path"]))
