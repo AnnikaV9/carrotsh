@@ -67,6 +67,7 @@ cd carrotsh
 
 # Install the dependencies
 npm install
+pip3 install -r requirements.txt
 
 # Edit the configuration file
 vim config.json
