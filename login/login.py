@@ -81,7 +81,13 @@ try:
             logged_in = True
         
         else:
-            user_otp = input("Enter the OTP shown in your authenticator app: ")
+            try:
+                user_otp = input("Enter the OTP shown in your authenticator app: ")
+                
+            except (EOFError, KeyboardInterrupt):
+                logger.info("({}) Cancelled login".format(client_remote_address))
+                print("Login cancelled.")
+                sys.exit()
             secret_key_file = open("login/2fa_key","r")
             secret_key = secret_key_file.read()
             secret_key_file.close()
@@ -124,7 +130,14 @@ try:
                 logged_in = True
             
             else:
-                user_otp = input("Enter the OTP shown in your authenticator app: ")
+                try:
+                    user_otp = input("Enter the OTP shown in your authenticator app: ")
+
+                except (EOFError, KeyboardInterrupt):
+                    logger.info("({}) Cancelled login".format(client_remote_address))
+                    print("Login cancelled.")
+                    sys.exit()
+
                 secret_key_file = open("login/2fa_key","r")
                 secret_key = secret_key_file.read()
                 secret_key_file.close()
