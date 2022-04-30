@@ -1,6 +1,7 @@
 import sys
 import json
 import os
+import pyotp
 
 help_message = """
 Usage: python3 carrotsh.py <COMMAND> [args]
@@ -12,6 +13,7 @@ start                                 run a syntax check and start the carrosh s
 stop                                  stop the carrotsh server
 status                                show the current status of the server
 setpass                               set the server password
+setup-2fa                             setup 2-factor authentication
 clear-auto-blocklist                  clear the auto blocklist
 clear-user-blocklist                  clear the user blocklist
 add-blocklist-address <address>       add an address to the user blocklist
@@ -28,6 +30,7 @@ commands = [
     "stop",
     "status",
     "setpass",
+    "setup-2fa",
     "clear-auto-blocklist",
     "clear-user-blocklist",
     "add-blocklist-address",
@@ -78,6 +81,13 @@ elif command == "status":
 
 elif command == "setpass":
     os.system("{} scripts/setpass.py".format(config["python_path"]))
+
+elif command == "setup-2fa":
+    secret_key = pyotp.random_base32()
+    secret_key_file = open("login/2fa_key", "w")
+    secret_key_file.write(secret_key)
+    secret_key_file.close()
+    print("Secret Key: {}".format(secret_key))
 
 elif command == "clear-auto-blocklist":
     auto_blocklist_file = open("blocklists/auto_blocklist.json", "r")
