@@ -5,6 +5,7 @@ import logging
 import json
 import time
 import sys
+import pyotp
 
 logging.basicConfig(format="%(asctime)s - %(message)s", filename="login/logins.log", filemode="a", level=logging.INFO)
 logger = logging.getLogger()
@@ -75,11 +76,40 @@ try:
 
             
     if not config["password_auth"]:
+        
+        if not config["2fa"]:
+            logged_in = True
+        
+        else:
+            try:
+                user_otp = input("Enter the OTP shown in your authenticator app: ")
+                
+            except (EOFError, KeyboardInterrupt):
+                logger.info("({}) Cancelled login".format(client_remote_address))
+                print("Login cancelled.")
+                sys.exit()
+            secret_key_file = open("login/2fa_key","r")
+            secret_key = secret_key_file.read()
+            secret_key_file.close()
+            totp = pyotp.TOTP(secret_key)
+            if totp.verify(user_otp):
+                logged_in = True
+            
+            else:
+                logged_in = False
+        
         if os.getenv("HOME") != None:
             os.chdir(os.getenv("HOME"))
 
-        logger.info("({}) Successful login".format(client_remote_address))
-        os.system(config["shell"])
+        if logged_in:
+            logger.info("({}) Successful login".format(client_remote_address))
+            os.system(config["shell"])
+        
+        else:
+            logger.info("({}) Failed login, incorrect otp".format(client_remote_address))
+            time.sleep(3)
+            print("Authentication failed.")
+            sys.exit()
 
     else:    
         password_file = open("login/password", "rb")
@@ -96,11 +126,40 @@ try:
 
         kdf = Scrypt(salt=config["password_auth_options"]["salt"].encode(), length=32, n=2**14, r=8, p=1)
         if kdf.derive(given_password.encode()) == password:
+            if not config["2fa"]:
+                logged_in = True
+            
+            else:
+                try:
+                    user_otp = input("Enter the OTP shown in your authenticator app: ")
+
+                except (EOFError, KeyboardInterrupt):
+                    logger.info("({}) Cancelled login".format(client_remote_address))
+                    print("Login cancelled.")
+                    sys.exit()
+
+                secret_key_file = open("login/2fa_key","r")
+                secret_key = secret_key_file.read()
+                secret_key_file.close()
+                totp = pyotp.TOTP(secret_key)
+                if totp.verify(user_otp):
+                    logged_in = True
+                
+                else:
+                    logged_in = False
+            
             if os.getenv("HOME") != None:
                 os.chdir(os.getenv("HOME"))
 
-            logger.info("({}) Successful login".format(client_remote_address))
-            os.system(config["shell"])
+            if logged_in:
+                logger.info("({}) Successful login".format(client_remote_address))
+                os.system(config["shell"])
+            
+            else:
+                logger.info("({}) Failed login, incorrect otp".format(client_remote_address))
+                time.sleep(3)
+                print("Authentication failed.")
+                sys.exit()
 
         else:
             if config["auto_blocklist"]:

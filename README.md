@@ -3,7 +3,7 @@
 A lightweight server that allows clients to connect securely and launch a shell or program remotely through a browser.
 
 
-![Screenshot](https://raw.githubusercontent.com/AnnikaV9/carrotsh/master/preview.gif)
+![Screenshot](https://github.com/AnnikaV9/carrotsh/raw/master/preview_.gif)
 
 <br />
 <br />
@@ -15,6 +15,7 @@ A lightweight server that allows clients to connect securely and launch a shell 
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Encryption](#encryption)
+- [Two-Factor Authentication](#2fa)
 - [Blocklists](#blocklists)
 - [Reverse proxies](#reverseproxies)
 - [Contributing](#contributing)
@@ -25,6 +26,13 @@ A lightweight server that allows clients to connect securely and launch a shell 
 ## Introduction <a name="introduction"></a>
 carrotsh is a lightweight and secure remote access server that uses the [websocket protocol](https://en.wikipedia.org/wiki/WebSocket), with full https support for encrypted connections. It aims to provide an ssh-like experience, but through a browser. The backend primarily runs on node.js, while the login manager and various scripts use python. [xterm.js](https://github.com/xtermjs/xterm.js/) is used as the frontend terminal. No installation of extensions or userscripts is necessary on the client side to access a carrotsh instance, only a modern browser with javascript support is required.
 
+#### Security features:
+ - HTTPS encryption
+ - Two-Factor authentication
+ - Automatic and manual IP blocklisting
+ 
+ <br />
+ 
 [Try the interactive demo](https://carrotsh.herokuapp.com)
 
 <br />
@@ -32,14 +40,14 @@ carrotsh is a lightweight and secure remote access server that uses the [websock
 
 ## Prerequisites <a name="prerequisites"></a>
 
-Supported operating systems:
+#### Supported operating systems:
  - macOS (Tested on Big Sur)
  - GNU/Linux (Tested on Arch & Debian)
  - musl/Linux (Tested on Alpine Linux)
  - Android (Tested on Android 11 & 12 using [Termux](https://github.com/termux/termux-app))
 
 
-Required software:
+#### Required software:
  - node.js
  - npm
  - python
@@ -59,6 +67,7 @@ cd carrotsh
 
 # Install the dependencies
 npm install
+pip3 install -r requirements.txt
 
 # Edit the configuration file
 vim config.json
@@ -84,12 +93,12 @@ start                                 run a syntax check and start the carrosh s
 stop                                  stop the carrotsh server
 status                                show the current status of the server
 setpass                               set the server password
+setup-2fa                             setup 2-factor authentication
 clear-auto-blocklist                  clear the auto blocklist
 clear-user-blocklist                  clear the user blocklist
 add-blocklist-address <address>       add an address to the user blocklist
 install-blocklist </path/to/list>     copy addresses in a file to the user blocklist
-config-dump                           output all configuration options to the terminal
-
+config-dump                           dump all configuration options to the terminal
 ```
 Note: Do not run carrotsh as root/admin. It is unnecessary and only reduces security.
 
@@ -109,6 +118,7 @@ Available options:
 | password_auth | Enables or disables password authentication | boolean | true |
 | salt (Under password_auth_options) | The salt used when hashing the password for storage. Please change the default value. After changing, make sure to run `python3 carrotsh.py setpass` again to generate a new hash | string | carrots |
 | show_username (Under password_auth_options) | Shows or hides username in the login prompt | boolean | true |
+| 2fa | Enables or disables Two-Factor authentication | boolean | false |
 | https | Enables or disables TLS/SSL | boolean | false |
 | path_to_cert (Under https_options) | Path to your certificate file | string | ./cert.pem |
 | path_to_key (Under https_options) | Path to your key file | string | ./key.pem |
@@ -125,7 +135,19 @@ carrotsh requires proper usage and configuration in order to be secure. Make sur
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.pem
 ```
-And then add the two files to the [configuration](#configuration).
+Enable https and add the two .pem files in the [configuration](#configuration).
+
+<br />
+<br />
+
+## Two-Factor Authentication <a name="2fa"></a>
+To set up TOTP 2fa, first enable it in the [configuration](#configuration). Then run:
+```
+python3 carrotsh.py setup-2fa
+```
+This will save a base32 secret key and print it to the console. Add this secret key to your preferred authenticator  app and keep another copy somewhere safe in case you ever lose or reset your device.
+
+A recommended open source authenticator app for android is [Aegis](https://github.com/beemdevelopment/Aegis)
 
 <br />
 <br />
