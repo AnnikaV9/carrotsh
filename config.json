@@ -8,6 +8,7 @@
     "salt": "carrots",
     "show_username": true
   },
+  "2fa": false,
   "https": false,
   "https_options": {
     "path_to_cert": "./cert.pem",
