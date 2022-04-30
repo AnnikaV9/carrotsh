@@ -3,7 +3,7 @@
 A lightweight server that allows clients to connect securely and launch a shell or program remotely through a browser.
 
 
-![Screenshot](https://github.com/AnnikaV9/carrotsh/raw/Update-1.1.0/preview_.gif)
+![Screenshot](https://github.com/AnnikaV9/carrotsh/raw/master/preview_.gif)
 
 <br />
 <br />
