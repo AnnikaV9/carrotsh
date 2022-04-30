@@ -141,7 +141,7 @@ Enable https and add the two .pem files in the [configuration](#configuration).
 <br />
 
 ## Two-Factor Authentication <a name="2fa"></a>
-To setup totp 2fa, first enable it in the [configuration](#configuration). Then run:
+To set up TOTP 2fa, first enable it in the [configuration](#configuration). Then run:
 ```
 python3 carrotsh.py setup-2fa
 ```
