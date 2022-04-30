@@ -3,7 +3,7 @@
 A lightweight server that allows clients to connect securely and launch a shell or program remotely through a browser.
 
 
-![Screenshot](https://raw.githubusercontent.com/AnnikaV9/carrotsh/master/preview.gif)
+![Screenshot](https://github.com/AnnikaV9/carrotsh/raw/Update-1.1.0/preview_.gif)
 
 <br />
 <br />
@@ -40,14 +40,14 @@ carrotsh is a lightweight and secure remote access server that uses the [websock
 
 ## Prerequisites <a name="prerequisites"></a>
 
-Supported operating systems:
+#### Supported operating systems:
  - macOS (Tested on Big Sur)
  - GNU/Linux (Tested on Arch & Debian)
  - musl/Linux (Tested on Alpine Linux)
  - Android (Tested on Android 11 & 12 using [Termux](https://github.com/termux/termux-app))
 
 
-Required software:
+#### Required software:
  - node.js
  - npm
  - python
