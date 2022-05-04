@@ -4,7 +4,7 @@ A lightweight server that allows clients to connect securely and launch a shell 
 
 <br />
 
-https://user-images.githubusercontent.com/68383195/166678784-83d2392b-435a-42b3-9935-b4edd3c1089c.mov
+![preview](https://user-images.githubusercontent.com/68383195/166842311-1eca5a8b-2d91-4f2f-a63f-606c76d630ee.gif)
 
 <br />
 <br />
