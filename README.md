@@ -1,5 +1,5 @@
 
-# carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.1.0&color=red&style=flat-square"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue&style=flat-square"></a>
+# carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.2.0&color=red&style=flat-square"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue&style=flat-square"></a>
 A lightweight server that allows clients to connect securely and launch a shell or program remotely through a browser.
 
 <br />
@@ -74,7 +74,7 @@ pip3 install -r requirements.txt
 vim config.json
 
 # Set the server password
-python3 carrotsh.py setpass
+python3 main setpass
 ```
 
 <br />
@@ -83,23 +83,24 @@ python3 carrotsh.py setpass
 ## Usage <a name="usage"></a>
 
 ```
-$ python3 carrotsh.py --help
+$ python3 main --help
 
-Usage: python3 carrotsh.py <COMMAND> [args]
+usage: python3 main <COMMAND> [args]
 
-Commands:
-
-version                               output the version information
-start                                 run a syntax check and start the carrosh server
-stop                                  stop the carrotsh server
-status                                show the current status of the server
-setpass                               set the server password
-setup-2fa                             setup 2-factor authentication
-clear-auto-blocklist                  clear the auto blocklist
-clear-user-blocklist                  clear the user blocklist
-add-blocklist-address <address>       add an address to the user blocklist
-install-blocklist </path/to/list>     copy addresses in a file to the user blocklist
-config-dump                           dump all configuration options to the terminal
+commands:
+    
+    help                                  show this message
+    version                               output the version information
+    start                                 run a syntax check and start the carrosh server
+    stop                                  stop the carrotsh server
+    status                                show the current status of the server
+    setpass                               set the server password
+    setup-2fa                             setup 2-factor authentication
+    clear-auto-blocklist                  clear the auto blocklist
+    clear-user-blocklist                  clear the user blocklist
+    add-blocklist-address <address>       add an address to the user blocklist
+    install-blocklist </path/to/list>     copy addresses in a file to the user blocklist
+    config-dump                           dump all configuration options to the terminal
 ```
 Note: Do not run carrotsh as root/admin. It is unnecessary and only reduces security.
 
@@ -132,7 +133,7 @@ Available options:
 <br />
 
 ## Encryption <a name="encryption"></a>
-carrotsh requires proper usage and configuration in order to be secure. Make sure to set up https, so connections are encrypted and cannot be sniffed. Here's an example process of creating a self-signed ssl certificate:
+carrotsh requires proper usage and configuration in order to be secure. Make sure to set up https, so connections are encrypted and cannot be sniffed. Here's an example openssl command for creating a self-signed ssl certificate:
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.pem
 ```
@@ -144,7 +145,7 @@ Enable https and add the two .pem files in the [configuration](#configuration).
 ## Two-Factor Authentication <a name="2fa"></a>
 To set up TOTP 2fa, first enable it in the [configuration](#configuration). Then run:
 ```
-python3 carrotsh.py setup-2fa
+python3 main setup-2fa
 ```
 This will save a base32 secret key and print it to the console. Add this secret key to your preferred authenticator  app and keep another copy somewhere safe in case you ever lose or reset your device.
 
@@ -161,7 +162,7 @@ The auto blocklist is used when `auto_blocklist` in the configuration is set to 
 
 To clear the auto blocklist:
 ```
-python3 carrotsh.py clear-auto-blocklist
+python3 main clear-auto-blocklist
 ```
 
 
@@ -170,17 +171,17 @@ python3 carrotsh.py clear-auto-blocklist
 The user blocklist is for you to edit and add addresses manually.
 To add a single address:
 ```
-python3 carrotsh.py add-blocklist-address <address>
+python3 main add-blocklist-address <address>
 ```
 To add a list with multiple addresses:
 ```
-python3 carrotsh.py install-blocklist </path/to/list>
+python3 main install-blocklist </path/to/list>
 ```
 This will append the addresses in the list to the user blocklist, removing any `#` comments.
 
 The user blocklist can be cleared the same way as the auto blocklist:
 ```
-python3 carrotsh.py clear-user-blocklist
+python3 main clear-user-blocklist
 ```
 
 <br />
