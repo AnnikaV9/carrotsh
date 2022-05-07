@@ -3,7 +3,7 @@ import os
 
 if __name__ == "__main__":
     help_message = """
-usage: python3 carrotsh.py <COMMAND> [args]
+usage: python3 main <COMMAND> [args]
 
 commands:
     
@@ -19,7 +19,6 @@ commands:
     add-blocklist-address <address>       add an address to the user blocklist
     install-blocklist </path/to/list>     copy addresses in a file to the user blocklist
     config-dump                           dump all configuration options to the terminal
-
 
 """
 
