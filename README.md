@@ -1,5 +1,5 @@
 
-# carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.2.0&color=red&style=flat-square"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue&style=flat-square"></a>
+# carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.3.0&color=red&style=flat-square"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue&style=flat-square"></a>
 A lightweight server that allows clients to connect securely and launch a shell or program remotely through a browser.
 
 <br />
@@ -71,7 +71,7 @@ npm install
 pip3 install -r requirements.txt
 
 # Edit the configuration file
-vim config.json
+vim config.yaml
 
 # Set the server password
 python3 main setpass
@@ -108,13 +108,13 @@ Note: Do not run carrotsh as root/admin. It is unnecessary and only reduces secu
 <br />
 
 ## Configuration <a name="configuration"></a>
-[config.json](https://github.com/AnnikaV9/carrotsh/blob/master/config.json) is the primary configuration file.
+[config.yaml](https://github.com/AnnikaV9/carrotsh/blob/master/config.yaml) is the primary configuration file.
 
 Available options:
 | Option |Description | Type | Default |
 |--|--|--|--|
 | port | The port the server should listen for requests on | integer | 6060 |
-| shell | Path to the shell executable. This does not actually have to be a valid shell, any program can be used, interactive or not. For example, to launch a disposable container with podman, you could set this as `podman run --rm -it myimage` | string | /bin/bash |
+| shell | Path to the shell executable and arguments. This does not actually have to be a valid shell, any program can be used, interactive or not. For example, to launch a disposable container with podman, you could set this as `["podman", "run", "--rm", "-it", "myimage"]` | array | /bin/bash --login |
 | shell_timeout_milliseconds | The max age (milliseconds) of the spawned shell session | integer | 3600000 |
 | python_path | Path to your python interpreter, which will be used to run [login.py](https://github.com/AnnikaV9/carrotsh/blob/master/login/login.py) | string | /usr/bin/python3 |
 | password_auth | Enables or disables password authentication | boolean | true |

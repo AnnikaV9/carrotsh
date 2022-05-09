@@ -1,8 +1,10 @@
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 import os
+import subprocess
 import getpass
 import logging
 import json
+import yaml
 import time
 import sys
 import pyotp
@@ -11,8 +13,8 @@ logging.basicConfig(format="%(asctime)s - %(message)s", filename="login/logins.l
 logger = logging.getLogger()
 
 try:
-    config_file = open("config.json", "r")
-    config = json.load(config_file)
+    config_file = open("config.yaml", "r")
+    config = yaml.safe_load(config_file)
     config_file.close()
         
     user_blocklist_file = open("blocklists/user_blocklist.json", "r")
@@ -103,7 +105,7 @@ try:
 
         if logged_in:
             logger.info("({}) Successful login".format(client_remote_address))
-            os.system(config["shell"])
+            subprocess.run(config["shell"])
         
         else:
             logger.info("({}) Failed login, incorrect otp".format(client_remote_address))
@@ -153,8 +155,8 @@ try:
 
             if logged_in:
                 logger.info("({}) Successful login".format(client_remote_address))
-                os.system(config["shell"])
-            
+                subprocess.run(config["shell"])
+                     
             else:
                 logger.info("({}) Failed login, incorrect otp".format(client_remote_address))
                 time.sleep(3)

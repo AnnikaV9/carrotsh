@@ -1,6 +1,6 @@
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 import getpass
-import json
+import yaml
 import sys
 
 def obt_pass():
@@ -12,8 +12,8 @@ def obt_pass():
     return password
 
 def main(args):
-    config_file = open("config.json", "r")
-    config = json.load(config_file)
+    config_file = open("config.yaml", "r")
+    config = yaml.safe_load(config_file)
     config_file.close()
     kdf = Scrypt(
         salt=config["password_auth_options"]["salt"].encode(),
