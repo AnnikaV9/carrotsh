@@ -1,0 +1,26 @@
+# Configuration file for carrotsh
+
+port: 6060
+
+shell: ["/bin/bash", "--login"]
+shell_timeout_milliseconds: 3600000
+
+python_path: "/usr/bin/python3"
+
+password_auth: true
+password_auth_options:
+    salt: "carrots"
+    show_username: true
+
+2fa: false
+
+https: false
+https_options:
+    path_to_cert: "./cert.pem"
+    path_to_key: "./key.pem"
+
+blocklist_shadow_mode: false
+auto_blocklist: true
+auto_blocklist_options:
+    max_incorrect_attempts: 5
+    unblock_after_minutes: 10080
