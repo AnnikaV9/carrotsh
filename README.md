@@ -18,6 +18,7 @@ A lightweight server that allows clients to connect securely and launch a shell 
 - [Encryption](#encryption)
 - [Two-Factor Authentication](#2fa)
 - [Blocklists](#blocklists)
+- [Auto startup on boot](#startup)
 - [Reverse proxies](#reverseproxies)
 - [Contributing](#contributing)
 
@@ -165,6 +166,7 @@ To clear the auto blocklist:
 python3 main clear-auto-blocklist
 ```
 
+<br />
 
 #### [user_blocklist.json](https://github.com/AnnikaV9/carrotsh/blob/master/blocklists/user_blocklist.json)
 
@@ -173,16 +175,41 @@ To add a single address:
 ```
 python3 main add-blocklist-address <address>
 ```
+
+<br />
+
 To add a list with multiple addresses:
 ```
 python3 main install-blocklist </path/to/list>
 ```
 This will append the addresses in the list to the user blocklist, removing any `#` comments.
 
+<br />
+
 The user blocklist can be cleared the same way as the auto blocklist:
 ```
 python3 main clear-user-blocklist
 ```
+
+<br />
+<br />
+
+## Auto startup on boot <a name="startup"></a>
+To start carrotsh's process manager on boot:
+```
+sudo -E env PATH=$PATH:/usr/bin ./node_modules/pm2/bin/pm2 startup -u $USER --hp $HOME
+```
+
+<br />
+
+And then after starting up carrotsh normally, run:
+```
+./node_modules/pm2/bin/pm2 save
+```
+
+<br />
+
+Now pm2 wil start on system boot and run carrotsh.
 
 <br />
 <br />
