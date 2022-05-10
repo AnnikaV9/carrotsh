@@ -202,7 +202,7 @@ sudo -E env PATH=$PATH:/usr/bin ./node_modules/pm2/bin/pm2 startup -u $USER --hp
 
 <br />
 
-And then after starting up carrotsh normally, run:
+And after starting up carrotsh normally, run:
 ```
 ./node_modules/pm2/bin/pm2 save
 ```
