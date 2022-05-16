@@ -114,7 +114,7 @@ Available options:
 | Option |Description | Type | Default |
 |--|--|--|--|
 | port | The port the server should listen for requests on | integer | 6060 |
-| shell | Path to the shell executable and arguments. This does not actually have to be a valid shell, any program can be used, interactive or not. For example, to launch a disposable container with podman, you could set this as `["podman", "run", "--rm", "-it", "myimage"]` | array | /bin/bash --login |
+| shell | Path to the shell executable and arguments. This does not actually have to be a valid shell, any program can be used, interactive or not. For example, to launch a disposable container with podman, you could set this as `["podman", "run", "--rm", "-it", "myimage"]` | array | ["/bin/bash", "--login"] |
 | shell_timeout_milliseconds | The max age (milliseconds) of the spawned shell session | integer | 3600000 |
 | python_path | Path to your python interpreter, which will be used to run [login.py](https://github.com/AnnikaV9/carrotsh/blob/master/login/login.py) | string | /usr/bin/python3 |
 | password_auth | Enables or disables password authentication | boolean | true |
