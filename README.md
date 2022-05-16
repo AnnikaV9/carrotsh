@@ -26,7 +26,7 @@ A lightweight server that allows clients to connect securely and launch a shell 
 <br />
 
 ## Introduction <a name="introduction"></a>
-carrotsh is a lightweight and secure remote access server that uses the [websocket protocol](https://en.wikipedia.org/wiki/WebSocket), with full https support for encrypted connections. It aims to provide an ssh-like experience, but through a browser. The backend primarily runs on node.js, while the login manager and various scripts use python. [xterm.js](https://github.com/xtermjs/xterm.js/) is used as the frontend terminal. No installation of extensions or userscripts is necessary on the client side to access a carrotsh instance, only a modern browser with javascript support is required.
+carrotsh is a lightweight and secure remote access server that uses the [websocket protocol](https://en.wikipedia.org/wiki/WebSocket), with full https support for encrypted connections. It aims to provide an ssh-like experience, but through a browser. [xterm.js](https://github.com/xtermjs/xterm.js/) is used as the frontend terminal. No installation of extensions or userscripts is necessary on the client side to access a carrotsh instance, only a modern browser with javascript support is required.
 
 #### Security features:
  - HTTPS encryption
@@ -76,7 +76,7 @@ vim config.yaml
 # Set the server password
 python3 main setpass
 ```
-**Note:** On some linux distributions, it's better to install python modules using the system package manager rather than pip. This avoids conflicts between the two package managers. Required modules can be checked in [requirements.txt](https://github.com/AnnikaV9/carrotsh/blob/master/requirements.txt) and installed with your system package manager manually, usually with the package name format: `python-<module>`
+**Note:** Do not install or run carrotsh as root. It is unnecessary and only reduces security.
 
 <br />
 <br />
@@ -103,7 +103,6 @@ commands:
     install-blocklist </path/to/list>     copy addresses in a file to the user blocklist
     config-dump                           dump all configuration options to the terminal
 ```
-**Note:** Do not run carrotsh as root/admin. It is unnecessary and only reduces security.
 
 <br />
 <br />
