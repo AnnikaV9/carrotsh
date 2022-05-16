@@ -129,6 +129,14 @@ Available options:
 | max_incorrect_attempts (Under auto_blocklist_options) | The maximum number of incorrect password attempts a client can make before their address is added to the auto blocklist | integer | 5 |
 | unblock_after_minutes (Under auto_blocklist_options) | The number of minutes to wait before unblocking an address in the auto blocklist | integer | 10080 |
 
+Most of these options can be changed without requiring you to restart carrotsh.
+
+The below options however, do require a restart:
+- port
+- python_path
+- https
+- https_options
+
 <br />
 <br />
 
