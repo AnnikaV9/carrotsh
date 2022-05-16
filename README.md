@@ -1,6 +1,6 @@
 
 # carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.3.0&color=red&style=flat-square"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue&style=flat-square"></a>
-A lightweight server that allows clients to connect securely and launch a shell or program remotely through a browser.
+A lightweight and secure remote access server that allows clients to connect and launch a shell or program through a browser.
 
 <br />
 
