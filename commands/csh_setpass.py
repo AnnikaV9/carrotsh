@@ -3,15 +3,17 @@ import getpass
 import yaml
 import sys
 
-def obt_pass():
+
+def obt_pass() -> str:
     password = getpass.getpass("New password: ")
     if getpass.getpass("Confirm password: ") != password:
         print("Error: Passwords do not match.")
         sys.exit(1)
-    
+
     return password
 
-def main(args):
+
+def main(args: list) -> None:
     config_file = open("config.yaml", "r")
     config = yaml.safe_load(config_file)
     config_file.close()
@@ -26,3 +28,5 @@ def main(args):
     password_file.write(kdf.derive(obt_pass().encode()))
     password_file.close()
     print("Password saved.")
+
+    return
