@@ -1,6 +1,7 @@
 import json
 
-def main(args):
+
+def main(args: list) -> None:
     user_blocklist_file = open("blocklists/user_blocklist.json", "r")
     user_blocklist = json.load(user_blocklist_file)
     user_blocklist_file.close()
@@ -9,3 +10,5 @@ def main(args):
     json.dump(user_blocklist, user_blocklist_file, indent=4)
     user_blocklist_file.close()
     print("Cleared the user blocklist")
+
+    return
