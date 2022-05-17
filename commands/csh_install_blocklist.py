@@ -1,10 +1,11 @@
 import json
 import sys
 
-def main(args):
+
+def main(args: list) -> None:
     if len(args) < 3:
         sys.exit("ERROR: Missing argument: </path/to/list>")
-    
+
     new_blocklist_file = open(args[2], "r")
     new_blocklist_raw = new_blocklist_file.read()
     new_blocklist_file.close()
@@ -33,3 +34,5 @@ def main(args):
     user_blocklist_file.close()
 
     print("Copied {} addresses from {}".format(len(new_blocklist), args[2]))
+
+    return
