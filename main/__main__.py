@@ -1,12 +1,13 @@
 import sys
 import os
 
+
 if __name__ == "__main__":
     help_message = """
 usage: python3 main <COMMAND> [args]
 
 commands:
-    
+
     help                                  show this message
     version                               output the version information
     start                                 run a syntax check and start the carrosh server
@@ -45,5 +46,5 @@ commands:
     sys.path.insert(0, "{}/commands".format(os.getcwd()))
 
     command = sys.argv[1].replace("-", "_")
-    
+
     __import__("csh_{}".format(command)).main(sys.argv)
