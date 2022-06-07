@@ -213,4 +213,4 @@ class LoginManager:
 
 if __name__ == "__main__":
     login_manager = LoginManager()
-    LoginManager.main()
+    login_manager.main()
