@@ -4,9 +4,10 @@ const http = require("http");
 const https = require("https");
 const ws = require("ws");
 const pty = require("node-pty");
+const yaml = require("js-yaml");
 
 const indexPage = fs.readFileSync("server/index.html");
-const serverConfig = JSON.parse(fs.readFileSync("config.json"));
+const serverConfig = yaml.load(fs.readFileSync("config.yaml", "utf8"));
 
 const app = express();
 var server;

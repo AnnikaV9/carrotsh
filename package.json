@@ -12,7 +12,8 @@
     "express": "latest",
     "ws": "latest",
     "node-pty": "latest",
-    "pm2": "latest"
+    "pm2": "latest",
+    "js-yaml": "^4.1.0"
   },
   "scripts": {
     "postinstall": "cd ./public && npm install"
