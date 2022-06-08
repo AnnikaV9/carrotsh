@@ -1,3 +1,7 @@
+[08/06/22] 1.3.2
+  - Fixed login_manager reference
+  - Fixed server.js searching for config.json instead of config.yaml
+
 [17/05/22] 1.3.1
   - Rewrote login/login.py neatly
   - Code style consistency
