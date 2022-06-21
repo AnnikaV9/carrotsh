@@ -229,10 +229,6 @@ carrotsh currently does not have proper support for use with reverse proxies lik
 
 ## Contributing <a name="contributing"></a>
 
-Feel like something can be improved? Found a bug? Want to make a feature request? Open an issue!
-
-Want to contribute directly? Feel free to make a pull request!
-
-<br />
+All contributions are welcome! :D
 
 **Credits to everyone [here](https://github.com/AnnikaV9/carrotsh/graphs/contributors)**
