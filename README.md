@@ -21,6 +21,7 @@ A lightweight and secure remote access server that allows clients to connect thr
 - [Blocklists](#blocklists)
 - [Start on boot](#startup)
 - [Reverse proxies](#reverseproxies)
+- [Todo](#todo)
 - [Contributing](#contributing)
 
 <br />
@@ -229,6 +230,14 @@ Now pm2 wil start on system boot and run carrotsh. If you ever restart carrotsh 
 
 ## Reverse proxies <a name="reverseproxies"></a>
 carrotsh currently does not have proper support for use with reverse proxies like nginx. It may work, but the auto blocklist may end up blocking everyone from connecting since it only sees the proxy's address. Using X-Forwarded-For requires a significant change to the code, as the header can be easily spoofed when connecting directly past the proxy. Until a proper solution is implemented, it is not recommended to run carrotsh behind a reverse proxy. If you do have a working solution, feel free to [contribute](#contributing).
+
+<br />
+<br />
+
+## Todo <a name="todo"></a>
+
+- Built-in encryption so that self-signed certificates will no longer be necessary. &nbsp; | &nbsp; **WIP**
+- Cli program for connecting to instances through a terminal, just like ssh.
 
 <br />
 <br />
