@@ -150,6 +150,8 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.pe
 ```
 Enable https and add the two .pem files in the [configuration](#configuration).
 
+An alternative to https would be a secure and trustable [VPN](https://en.wikipedia.org/wiki/Virtual_private_network).
+
 <br />
 <br />
 
