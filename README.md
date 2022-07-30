@@ -45,15 +45,16 @@ carrotsh is a lightweight and secure remote access server that uses the [websock
 
 #### Supported operating systems:
  - macOS (Tested on Big Sur)
- - GNU/Linux (Tested on Arch & Debian)
- - musl/Linux (Tested on Alpine Linux)
- - Android (Tested on Android 11 & 12 using [Termux](https://github.com/termux/termux-app))
+ - GNU/Linux (Tested on Arch, Debian Bullseye, and RHEL 9)
+ - BSD (Tested on FreeBSD 13.1 and OpenBSD 7.1)
+ - musl/Linux (Tested on Alpine 3.16)
+ - Android (Tested on Android 11 and 12 using [Termux](https://github.com/termux/termux-app))
 
 
 #### Required software:
- - node.js
- - npm
- - python3
+ - node.js v16 or above
+ - npm v6 or above
+ - python v3.7 or above
  - make & g++ (Linux, Android) or Xcode (MacOS) -> (For building node-pty when running `npm install`)
  
 <br />
@@ -77,7 +78,7 @@ vim config.yaml
 # Set the server password
 python3 main setpass
 ```
-**Note:** Do not install or run carrotsh as root. It is unnecessary and only reduces security.
+***Note:** Do not install or run carrotsh as root. It is unnecessary and only reduces security.*
 
 <br />
 <br />
@@ -203,6 +204,8 @@ python3 main clear-user-blocklist
 <br />
 
 ## Start on boot <a name="startup"></a>
+***Note:** This method has only been tested to work with [systemd](https://www.freedesktop.org/wiki/Software/systemd/).*
+
 To start carrotsh's process manager on boot:
 ```
 sudo -E env PATH=$PATH:/usr/bin ./node_modules/pm2/bin/pm2 startup -u $USER --hp $HOME
@@ -217,7 +220,7 @@ And after starting up carrotsh normally, run:
 
 <br />
 
-Now pm2 wil start on system boot and run carrotsh.
+Now pm2 wil start on system boot and run carrotsh. If you ever restart carrotsh manually, run the save command again.
 
 <br />
 <br />
