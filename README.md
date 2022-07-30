@@ -1,11 +1,11 @@
 <div align="center">
 <h1> carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.3.2&color=red&style=flat-square"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue&style=flat-square"></a></h1>
-A lightweight and secure remote access server that allows clients to connect and launch a shell or program through a browser.
+A lightweight and secure remote access server that allows clients to connect through a browser.
 
 <br />
 <br />
 
-<img src="https://user-images.githubusercontent.com/68383195/166842311-1eca5a8b-2d91-4f2f-a63f-606c76d630ee.gif" width="85%"></div>
+<img src="https://user-images.githubusercontent.com/68383195/166842311-1eca5a8b-2d91-4f2f-a63f-606c76d630ee.gif" width="60%"></div>
 
 <br />
 <br />
@@ -205,6 +205,8 @@ python3 main clear-user-blocklist
 
 ## Start on boot <a name="startup"></a>
 ***Note:** This method has only been tested to work with [systemd](https://www.freedesktop.org/wiki/Software/systemd/).*
+
+<br />
 
 To start carrotsh's process manager on boot:
 ```
