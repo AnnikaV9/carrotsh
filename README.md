@@ -213,7 +213,7 @@ python3 main clear-user-blocklist
 
 To start carrotsh's process manager on boot:
 ```
-sudo -E env PATH=$PATH:/usr/bin ./node_modules/pm2/bin/pm2 startup -u $USER --hp $HOME
+sudo ./node_modules/pm2/bin/pm2 startup -u $USER --hp $HOME
 ```
 
 <br />
