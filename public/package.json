@@ -1,6 +1,6 @@
 {
   "name": "carrotsh",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "a server that allows clients to connect and launch a shell remotely through a browser",
   "author": "AnnikaV9",
   "license": "Unlicense",

@@ -1,5 +1,5 @@
 <div align="center">
-<h1> carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.3.2&color=red&style=flat-square"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue&style=flat-square"></a></h1>
+<h1> carrotsh <br /> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.3.3&color=red&style=flat-square"></a> <a target="_blank" href="https://github.com/AnnikaV9/carrotsh/blob/master/LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue&style=flat-square"></a></h1>
 A lightweight and secure remote access server that allows clients to connect through a browser.
 
 <br />
@@ -70,14 +70,13 @@ git clone https://github.com/AnnikaV9/carrotsh.git
 cd carrotsh
 
 # Install the dependencies
-npm install
-python3 -m pip install --user -r requirements.txt
+python3 csh install-deps
 
 # Edit the configuration file
 vim config.yaml
 
 # Set the server password
-python3 main setpass
+python3 csh setpass
 ```
 ***Note:** Do not install or run carrotsh as root. It is unnecessary and only reduces security.*
 
@@ -87,12 +86,12 @@ python3 main setpass
 ## Usage <a name="usage"></a>\[[^](#contents)]
 
 ```
-$ python3 main --help
+$ python3 csh --help
 
-usage: python3 main <COMMAND> [args]
+usage: python3 csh <COMMAND> [args]
 
 commands:
-    
+
     help                                  show this message
     version                               output the version information
     start                                 run a syntax check and start the carrosh server
@@ -105,6 +104,7 @@ commands:
     add-blocklist-address <address>       add an address to the user blocklist
     install-blocklist </path/to/list>     copy addresses in a file to the user blocklist
     config-dump                           dump all configuration options to the terminal
+    install-deps                          install npm and pip dependencies
 ```
 
 <br />
@@ -158,7 +158,7 @@ An alternative to https would be a secure and trustable [VPN](https://en.wikiped
 ## Two-Factor Authentication <a name="2fa"></a>\[[^](#contents)]
 To set up TOTP 2fa, first enable it in the [configuration](#configuration). Then run:
 ```
-python3 main setup-2fa
+python3 csh setup-2fa
 ```
 This will save a base32 secret key and print it to the console. Add this secret key to your preferred authenticator  app and keep another copy somewhere safe in case you ever lose or reset your device.
 
@@ -175,7 +175,7 @@ The auto blocklist is used when `auto_blocklist` in the configuration is set to 
 
 To clear the auto blocklist:
 ```
-python3 main clear-auto-blocklist
+python3 csh clear-auto-blocklist
 ```
 
 <br />
@@ -185,14 +185,14 @@ python3 main clear-auto-blocklist
 The user blocklist is for you to edit and add addresses manually.
 To add a single address:
 ```
-python3 main add-blocklist-address <address>
+python3 csh add-blocklist-address <address>
 ```
 
 <br />
 
 To add a list with multiple addresses:
 ```
-python3 main install-blocklist </path/to/list>
+python3 csh install-blocklist </path/to/list>
 ```
 This will append the addresses in the list to the user blocklist, removing any `#` comments.
 
@@ -200,7 +200,7 @@ This will append the addresses in the list to the user blocklist, removing any `
 
 The user blocklist can be cleared the same way as the auto blocklist:
 ```
-python3 main clear-user-blocklist
+python3 csh clear-user-blocklist
 ```
 
 <br />
