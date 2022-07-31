@@ -71,7 +71,7 @@ cd carrotsh
 
 # Install the dependencies
 npm install
-python3 -m pip install -r requirements.txt
+python3 -m pip install --user -r requirements.txt
 
 # Edit the configuration file
 vim config.yaml
@@ -238,8 +238,11 @@ carrotsh currently does not have proper support for use with reverse proxies lik
 
 ## Todo <a name="todo"></a>
 
-- Built-in encryption so that self-signed certificates will no longer be necessary. &nbsp; | &nbsp; **WIP**
-- Cli program for connecting to instances through a terminal, just like ssh.
+- Built-in encryption so that self-signed certificates will no longer be necessary &nbsp; | &nbsp; **Scrapped**
+- Cli program for connecting to instances through a terminal, just like ssh &nbsp; | &nbsp; **WIP**
+- Client side theme/font configuration interface
+- Built-in updater that doesn't break the config and blocklists
+- Optional built-in shell with command access controls and other features that improve security
 
 <br />
 <br />
