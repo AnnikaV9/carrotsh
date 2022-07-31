@@ -238,11 +238,9 @@ carrotsh currently does not have proper support for use with reverse proxies lik
 
 ## Todo <a name="todo"></a>\[[^](#contents)]
 
-- Built-in encryption so that self-signed certificates will no longer be necessary &nbsp; | &nbsp; **Scrapped**
-- Cli program for connecting to instances through a terminal, just like ssh &nbsp; | &nbsp; **WIP**
 - Reverse proxy mode that only accepts connections from the configured proxy address
-- Client side theme/font configuration interface
-- Built-in updater that doesn't break the config and blocklists
+- Client side theme/font configuration interface &nbsp; **|** &nbsp; ***Currently WIP***
+- Updater that doesn't break the config and blocklists
 - Optional built-in shell with command access controls and other features that improve security
 
 <br />
