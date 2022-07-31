@@ -10,7 +10,7 @@ A lightweight and secure remote access server that allows clients to connect thr
 <br />
 <br />
 
-## Table of Contents
+## Table of Contents <a name="contents"></a>
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -27,7 +27,7 @@ A lightweight and secure remote access server that allows clients to connect thr
 <br />
 <br />
 
-## Introduction <a name="introduction"></a>
+## Introduction <a name="introduction"></a>\[[^](#contents)]
 carrotsh is a lightweight and secure remote access server that uses the [websocket protocol](https://en.wikipedia.org/wiki/WebSocket), with full https support for encrypted connections. It aims to provide an ssh-like experience, but through a browser. [xterm.js](https://github.com/xtermjs/xterm.js/) is used as the frontend terminal. No installation of extensions or userscripts is necessary on the client side to access a carrotsh instance, only a modern browser with javascript support is required.
 
 #### Security features:
@@ -42,7 +42,7 @@ carrotsh is a lightweight and secure remote access server that uses the [websock
 <br />
 <br />
 
-## Prerequisites <a name="prerequisites"></a>
+## Prerequisites <a name="prerequisites"></a>\[[^](#contents)]
 
 #### Supported operating systems:
  - macOS (Tested on Big Sur)
@@ -61,7 +61,7 @@ carrotsh is a lightweight and secure remote access server that uses the [websock
 <br />
 <br />
  
-## Installation <a name="installation"></a>
+## Installation <a name="installation"></a>\[[^](#contents)]
 ```
 # Clone the repository
 git clone https://github.com/AnnikaV9/carrotsh.git
@@ -84,7 +84,7 @@ python3 main setpass
 <br />
 <br />
 
-## Usage <a name="usage"></a>
+## Usage <a name="usage"></a>\[[^](#contents)]
 
 ```
 $ python3 main --help
@@ -110,7 +110,7 @@ commands:
 <br />
 <br />
 
-## Configuration <a name="configuration"></a>
+## Configuration <a name="configuration"></a>\[[^](#contents)]
 [config.yaml](https://github.com/AnnikaV9/carrotsh/blob/master/config.yaml) is the primary configuration file.
 
 Available options:
@@ -143,7 +143,7 @@ The below options however, do require a restart:
 <br />
 <br />
 
-## Encryption <a name="encryption"></a>
+## Encryption <a name="encryption"></a>\[[^](#contents)]
 carrotsh requires proper usage and configuration in order to be secure. Make sure to set up https, so connections are encrypted and cannot be sniffed. Here's an example openssl command for creating a self-signed ssl certificate:
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.pem
@@ -155,7 +155,7 @@ An alternative to https would be a secure and trustable [VPN](https://en.wikiped
 <br />
 <br />
 
-## Two-Factor Authentication <a name="2fa"></a>
+## Two-Factor Authentication <a name="2fa"></a>\[[^](#contents)]
 To set up TOTP 2fa, first enable it in the [configuration](#configuration). Then run:
 ```
 python3 main setup-2fa
@@ -167,7 +167,7 @@ A recommended open source authenticator app for android is [Aegis](https://githu
 <br />
 <br />
 
-## Blocklists <a name="blocklists"></a>
+## Blocklists <a name="blocklists"></a>\[[^](#contents)]
 Blocklists allow you to prevent clients with blocked remote addresses from ever reaching the login prompt. There are two blocklists carrotsh uses:
 
 #### [auto_blocklist.json](https://github.com/AnnikaV9/carrotsh/blob/master/blocklists/auto_blocklist.json)
@@ -206,7 +206,7 @@ python3 main clear-user-blocklist
 <br />
 <br />
 
-## Start on boot <a name="startup"></a>
+## Start on boot <a name="startup"></a>\[[^](#contents)]
 ***Note:** This method has only been tested to work with [systemd](https://www.freedesktop.org/wiki/Software/systemd/).*
 
 <br />
@@ -230,13 +230,13 @@ Now pm2 wil start on system boot and run carrotsh. If you ever restart carrotsh 
 <br />
 <br />
 
-## Reverse proxies <a name="reverseproxies"></a>
+## Reverse proxies <a name="reverseproxies"></a>\[[^](#contents)]
 carrotsh currently does not have proper support for use with reverse proxies like nginx. It may work, but the auto blocklist may end up blocking everyone from connecting since it only sees the proxy's address. Using X-Forwarded-For requires a significant change to the code, as the header can be easily spoofed when connecting directly past the proxy. Until a proper solution is implemented, it is not recommended to run carrotsh behind a reverse proxy. If you do have a working solution, feel free to [contribute](#contributing).
 
 <br />
 <br />
 
-## Todo <a name="todo"></a>
+## Todo <a name="todo"></a>\[[^](#contents)]
 
 - Built-in encryption so that self-signed certificates will no longer be necessary &nbsp; | &nbsp; **Scrapped**
 - Cli program for connecting to instances through a terminal, just like ssh &nbsp; | &nbsp; **WIP**
@@ -248,8 +248,8 @@ carrotsh currently does not have proper support for use with reverse proxies lik
 <br />
 <br />
 
-## Contributing <a name="contributing"></a>
+## Contributing <a name="contributing"></a>\[[^](#contents)]
 
-All contributions are welcome! :D
+All contributions are welcome, just create a pull request!
 
 **Credits to everyone [here](https://github.com/AnnikaV9/carrotsh/graphs/contributors)**
