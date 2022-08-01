@@ -31,7 +31,7 @@ A lightweight and secure remote access server that allows clients to connect thr
 carrotsh is a lightweight and secure remote access server that uses the [websocket protocol](https://en.wikipedia.org/wiki/WebSocket), with full https support for encrypted connections. It aims to provide an ssh-like experience, but through a browser. [xterm.js](https://github.com/xtermjs/xterm.js/) is used as the frontend terminal. No installation of extensions or userscripts is necessary on the client side to access a carrotsh instance, only a modern browser with javascript support is required.
 
 #### Security features:
- - HTTPS encryption
+ - HTTPS support
  - Two-Factor authentication
  - Automatic and manual IP blocklisting
  
