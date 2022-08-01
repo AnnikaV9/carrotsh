@@ -127,7 +127,7 @@ Available options:
 | shell_timeout_milliseconds | The max age (milliseconds) of the spawned shell session | integer | 3600000 |
 | python_path | Path to your python interpreter, which will be used to run [login.py](https://github.com/AnnikaV9/carrotsh/blob/master/login/login.py) | string | /usr/bin/python3 |
 | password_auth | Enables or disables password authentication | boolean | true |
-| salt (Under password_auth_options) | The salt used when hashing the password for storage. Please change the default value. After changing, make sure to run `python3 carrotsh.py setpass` again to generate a new hash | string | carrots |
+| salt (Under password_auth_options) | The salt used when hashing the password for storage. Please change the default value. After changing, make sure to run `python3 csh setpass` again to generate a new hash | string | carrots |
 | show_username (Under password_auth_options) | Shows or hides username in the login prompt | boolean | true |
 | 2fa | Enables or disables Two-Factor authentication | boolean | false |
 | https | Enables or disables TLS/SSL | boolean | false |
