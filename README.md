@@ -56,7 +56,8 @@ carrotsh is a lightweight and secure remote access server that uses the [websock
  - node.js v16 or above
  - npm v6 or above
  - python v3.7 or above
- - make & g++ (Linux, Android) or Xcode (MacOS) -> (For building node-pty when running `npm install`)
+ - make and g++ (Linux, Android) or Xcode (MacOS) - (For building node-pty during installation)
+ - rustc - (Required only if there isn't a pre-built [cryptography](https://pypi.org/project/cryptography/) package for your architecture)
  
 <br />
 <br />
