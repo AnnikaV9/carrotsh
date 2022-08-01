@@ -1,3 +1,5 @@
-node_modules/
-login/password
-login/2fa_key
+node_modules
+password
+2fa_key
+.venv
+pm2_logs
