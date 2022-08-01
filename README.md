@@ -56,6 +56,7 @@ carrotsh is a lightweight and secure remote access server that uses the [websock
  - node.js v16 or above
  - npm v6 or above
  - python v3.7 or above
+ - python-poetry v1 or above
  - make and g++ (Linux, Android) or Xcode (MacOS) - (For building node-pty during installation)
  - rustc - (Required only if there isn't a pre-built [cryptography](https://pypi.org/project/cryptography/) package for your architecture)
  
@@ -76,6 +77,9 @@ python3 csh install-deps
 # Edit the configuration file
 vim config.yaml
 
+# Activate the virtualenv
+poetry shell
+
 # Set the server password
 python3 csh setpass
 ```
@@ -86,6 +90,7 @@ python3 csh setpass
 
 ## Usage <a name="usage"></a>\[[^](#contents)]
 
+***Note:** Make sure to run `poetry shell` before interacting with the carrotsh cli.*
 ```
 $ python3 csh --help
 

@@ -4,12 +4,12 @@ import sys
 
 def main(args: list) -> None:
     npm_install_cmd = ["npm", "install"]
-    pip_install_cmd = [sys.executable, "-m", "pip", "install", "--user", "-r", "requirements.txt"]
+    poetry_install_cmd = ["poetry", "install"]
     print(f"subprocess.run({npm_install_cmd})\n")
     status = subprocess.run(npm_install_cmd)
     print(f"\n{status}")
-    print(f"\nsubprocess.run({pip_install_cmd})\n")
-    status = subprocess.run(pip_install_cmd)
+    print(f"\nsubprocess.run({poetry_install_cmd})\n")
+    status = subprocess.run(poetry_install_cmd)
     print(f"\n{status}")
 
     return
