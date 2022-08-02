@@ -37,6 +37,12 @@ class LoginManager:
         if os.getenv("HOME") is not None:
             os.chdir(os.getenv("HOME"))
 
+        try:
+            subprocess.run(["stty", "cols", "999"])
+        
+        except:
+            None
+        
         subprocess.run(self.config["shell"])
 
         return
@@ -204,7 +210,7 @@ class LoginManager:
                     print("Authentication failed.")
                     sys.exit()
 
-        except Exception:
+        except (Exception, KeyboardInterrupt, EOFError):
             self.logger.info(str(sys.exc_info()).replace("\n", " "))
             print("An error occured during login.")
 
@@ -214,3 +220,4 @@ class LoginManager:
 if __name__ == "__main__":
     login_manager = LoginManager()
     login_manager.main()
+    

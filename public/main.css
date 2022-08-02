@@ -1,0 +1,10 @@
+body {
+    margin: 20px;
+    background-color: #181a1b
+}
+
+#terminal {
+    height: 95%;
+    width: 100%;
+    position: fixed
+}

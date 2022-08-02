@@ -3,3 +3,4 @@ password
 2fa_key
 .venv
 pm2_logs
+logins.log

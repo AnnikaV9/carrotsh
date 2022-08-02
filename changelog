@@ -1,3 +1,7 @@
+[02/08/22] 1.4.1
+  - Fixed terminal wraparound issue
+  - Prettified install-deps output
+  
 [31/07/22] 1.4.0
   - Switched cli path from main to csh
   - Added install-deps command
