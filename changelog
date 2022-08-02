@@ -1,6 +1,5 @@
 [02/08/22] 1.4.1
   - Fixed terminal wraparound issue
-  - Prettified install-deps output
   
 [31/07/22] 1.4.0
   - Switched cli path from main to csh
@@ -16,7 +15,7 @@
  
 [09/05/22] 1.3.0
   - Switched to YAML for configuration
-  - Switched to subprocess.run from of os.system
+  - Switched to subprocess.run from os.system
  
 [07/05/22] 1.2.0
   - Cleaner and more modular command system
