@@ -25,7 +25,7 @@ class LoginManager:
     def __init__(self) -> None:
 
         """
-        Initialize the logger, load the config and define define
+        Initialize the logger, load the config and define
         the client_remote_address variable
         """
 
