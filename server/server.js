@@ -46,7 +46,12 @@ WebsocketServer.on("connection", (connection, req) => {
       connection.send(data);
     } catch (err) {}
   });
-  connection.on("message", (data) => term.write(data));
+  connection.on("message", (data) => {
+    try {
+      ttyDimensions = JSON.parse(data.toString());
+      term.resize(ttyDimensions["columns"], ttyDimensions["rows"])
+    } catch { term.write(data) }
+  });
 });
 
 app.get("/", (req, res) => {

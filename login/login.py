@@ -25,7 +25,7 @@ class LoginManager:
     def __init__(self) -> None:
 
         """
-        Initialize the logger, load the config and define
+        Initializes the logger, loads the config and defines
         the client_remote_address variable
         """
 
@@ -49,19 +49,11 @@ class LoginManager:
     def spawn_shell(self) -> None:
 
         """
-        If $HOME is set then chdir()s to it,
-        runs `stty cols 999` to fix the text wraparound issue
-        and starts the shell
+        If $HOME is set then chdir()s to it and starts the shell
         """
 
         if os.getenv("HOME") is not None:
             os.chdir(os.getenv("HOME"))
-
-        try:                                                       # Implement dynamic resizing of
-            subprocess.run(["stty", "cols", "999"], check=False)   # the tty in server/server.js with
-                                                                   # node-pty instead of this stupid
-        except Exception:                                          # hacky fix that causes a lot of
-            pass                                                   # programs like htop to look broken
 
         subprocess.run(self.config["shell"], check=False)
 

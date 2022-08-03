@@ -1,3 +1,6 @@
+[03/08/22] 1.4.3
+  - tty now dynamically resizes
+
 [03/08/22] 1.4.2
   - Fixed a few auto blocklist bugs
   - Code style and comments
