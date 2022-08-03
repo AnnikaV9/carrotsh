@@ -6,10 +6,10 @@ authors = ["AnnikaV9 <carrot.moncher@gmail.com>"]
 license = "Unlicense"
 
 [tool.poetry.dependencies]
-python = "^3.7, ^3.8, ^3.9, ^3.10"
-pyyaml = "^6.0"
-pyotp = "^2.6"
-cryptography = "^37.0"
+python = "3.7.*, 3.8.*, 3.9.*, 3.10.*"
+pyyaml = "6.*"
+pyotp = "2.*"
+cryptography = "^37.*"
 
 [tool.poetry.dev-dependencies]
 
