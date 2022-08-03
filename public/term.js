@@ -10,7 +10,9 @@ term.loadAddon(websocketAddon);
 term.loadAddon(resizeAddon);
 term.open(document.getElementById("terminal"));
 resizeAddon.fit();
-socket.send(`{"columns": ${term.cols}, "rows": ${term.rows}}`)
+socket.addEventListener("open", () => {
+    socket.send(`{"columns": ${term.cols}, "rows": ${term.rows}}`)
+});
 window.addEventListener("resize", () => {
     resizeAddon.fit()
     socket.send(`{"columns": ${term.cols}, "rows": ${term.rows}}`)
