@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "carrotsh"
-version = "1.4.1"
+version = "1.4.2"
 description = "A lightweight and secure remote access server that allows clients to connect through a browser"
 authors = ["AnnikaV9 <carrot.moncher@gmail.com>"]
 license = "Unlicense"

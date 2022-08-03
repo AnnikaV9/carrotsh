@@ -1,18 +1,28 @@
+"""
+cmd: install-blocklist
+"""
+
 import json
 import sys
 
 
 def main(args: list) -> None:
+
+    """
+    Copies over addresses from specified file to blocklists/user_blocklist.json
+    and removes any # comments
+    """
+
     if len(args) < 3:
         sys.exit("ERROR: Missing argument: </path/to/list>")
 
-    new_blocklist_file = open(args[2], "r")
-    new_blocklist_raw = new_blocklist_file.read()
-    new_blocklist_file.close()
+    with open(args[2], "r", encoding="utf-8") as new_blocklist_file:
+        new_blocklist_raw = new_blocklist_file.read()
 
     new_blocklist = new_blocklist_raw.split("\n")
 
     to_remove = []
+
     for entry in new_blocklist:
         if "#" in entry:
             to_remove.append(entry)
@@ -23,16 +33,12 @@ def main(args: list) -> None:
 
     new_blocklist.remove("")
 
-    user_blocklist_file = open("blocklists/user_blocklist.json", "r")
-    user_blocklist = json.load(user_blocklist_file)
-    user_blocklist_file.close()
+    with open("blocklists/user_blocklist.json", "r", encoding="utf-8") as user_blocklist_file_for_read:
+        user_blocklist = json.load(user_blocklist_file_for_read)
 
     user_blocklist["blocklist"].extend(new_blocklist)
 
-    user_blocklist_file = open("blocklists/user_blocklist.json", "w")
-    json.dump(user_blocklist, user_blocklist_file, indent=4)
-    user_blocklist_file.close()
+    with open("blocklists/user_blocklist.json", "w", encoding="utf-8") as user_blocklist_file_for_write:
+        json.dump(user_blocklist, user_blocklist_file_for_write, indent=4)
 
-    print("Copied {} addresses from {}".format(len(new_blocklist), args[2]))
-
-    return
+    print(f"Copied {len(new_blocklist)} addresses from {args[2]}")

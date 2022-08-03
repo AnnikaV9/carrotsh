@@ -1,3 +1,8 @@
+/* 
+Backend server that connects with clients and then spawns a python
+pty process that runs ogin/login.py 
+*/
+
 const fs = require("fs");
 const express = require("express");
 const http = require("http");

@@ -1,9 +1,13 @@
+"""
+The carrotsh cli
+"""
+
 import sys
 import os
 
 
 if __name__ == "__main__":
-    help_message = """
+    HELP_MESSAGE = """
 usage: python3 csh <COMMAND> [args]
 
 commands:
@@ -25,7 +29,7 @@ commands:
 """
 
     if len(sys.argv) < 2 or "--help" == sys.argv[1] or "-h" == sys.argv[1] or "help" == sys.argv[1]:
-        sys.exit(help_message)
+        sys.exit(HELP_MESSAGE)
 
     commands = [
         "version",
@@ -43,10 +47,10 @@ commands:
     ]
 
     if sys.argv[1] not in commands:
-        sys.exit("ERROR: Unknown command {}".format(sys.argv[1]))
+        sys.exit(f"ERROR: Unknown command {sys.argv[1]}")
 
-    sys.path.insert(0, "{}/commands".format(os.getcwd()))
+    sys.path.insert(0, f"{os.getcwd()}/commands")
 
-    command = sys.argv[1].replace("-", "_")
+    COMMAND = sys.argv[1].replace("-", "_")
 
-    __import__("csh_{}".format(command)).main(sys.argv)
+    __import__(f"csh_{COMMAND}").main(sys.argv)

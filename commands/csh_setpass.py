@@ -1,10 +1,19 @@
-from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
+"""
+cmd: setpass
+"""
+
+import sys
 import getpass
 import yaml
-import sys
+from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 
 
 def obt_pass() -> str:
+
+    """
+    Prompts the user for a password, and matches the input with a second second prompt
+    """
+
     password = getpass.getpass("New password: ")
     if getpass.getpass("Confirm password: ") != password:
         print("Error: Passwords do not match.")
@@ -14,9 +23,16 @@ def obt_pass() -> str:
 
 
 def main(args: list) -> None:
-    config_file = open("config.yaml", "r")
-    config = yaml.safe_load(config_file)
-    config_file.close()
+
+    """
+    Hashes the password with configured salt and writes the data to login/password
+    """
+
+    del args
+
+    with open("config.yaml", "r", encoding="utf-8") as config_file:
+        config = yaml.safe_load(config_file)
+
     kdf = Scrypt(
         salt=config["password_auth_options"]["salt"].encode(),
         length=32,
@@ -24,9 +40,8 @@ def main(args: list) -> None:
         r=8,
         p=1
     )
-    password_file = open("login/password", "wb")
-    password_file.write(kdf.derive(obt_pass().encode()))
-    password_file.close()
-    print("Password saved.")
 
-    return
+    with open("login/password", "wb") as password_file:
+        password_file.write(kdf.derive(obt_pass().encode()))
+
+    print("Password saved.")

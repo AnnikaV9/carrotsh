@@ -1,18 +1,34 @@
-from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
+"""
+The heart of carrotsh, this manages everything related to
+logging into the server and running the shell/program
+"""
+
 import os
-import subprocess
-import getpass
-import logging
-import json
-import yaml
 import time
 import sys
+import json
+import subprocess
+import logging
+import getpass
+import yaml
 import pyotp
+from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
+
 
 
 class LoginManager:
 
+    """
+    The main LoginManager class
+    """
+
     def __init__(self) -> None:
+
+        """
+        Initialize the logger, load the config and define define
+        the client_remote_address variable
+        """
+
         logging.basicConfig(
             format="%(asctime)s - %(message)s",
             filename="login/logins.log",
@@ -21,9 +37,8 @@ class LoginManager:
         )
         self.logger = logging.getLogger()
 
-        config_file = open("config.yaml", "r")
-        self.config = yaml.safe_load(config_file)
-        config_file.close()
+        with open("config.yaml", "r", encoding="utf-8") as config_file:
+            self.config = yaml.safe_load(config_file)
 
         try:
             self.client_remote_address = sys.argv[1]
@@ -31,60 +46,68 @@ class LoginManager:
         except IndexError:
             self.client_remote_address = "Unknown"
 
-        return
-
     def spawn_shell(self) -> None:
+
+        """
+        If $HOME is set then chdir()s to it,
+        runs `stty cols 999` to fix the text wraparound issue
+        and starts the shell
+        """
+
         if os.getenv("HOME") is not None:
             os.chdir(os.getenv("HOME"))
 
-        try:
-            subprocess.run(["stty", "cols", "999"])
-        
-        except:
-            None
-        
-        subprocess.run(self.config["shell"])
+        try:                                                       # Implement dynamic resizing of
+            subprocess.run(["stty", "cols", "999"], check=False)   # the tty in server/server.js with
+                                                                   # node-pty instead of this stupid
+        except Exception:                                          # hacky fix that causes a lot of
+            pass                                                   # programs like htop to look broken
 
-        return
+        subprocess.run(self.config["shell"], check=False)
 
     def verify_otp(self) -> bool:
+
+        """
+        Obtains OTP from the user attempting to login, checks it
+        against the server key and return a boolean value depending
+        on whether the check passed or failed
+        """
+
         try:
             user_otp = input("Enter the OTP shown in your authenticator app: ")
 
         except (EOFError, KeyboardInterrupt):
-            self.logger.info("({}) Cancelled login".format(self.client_remote_address))
+            self.logger.info("(%s) Cancelled login", self.client_remote_address)
             print("Login cancelled.")
             sys.exit()
 
-        secret_key_file = open("login/2fa_key", "r")
-        secret_key = secret_key_file.read()
-        secret_key_file.close()
-        totp = pyotp.TOTP(secret_key)
+        with open("login/2fa_key", "r", encoding="utf-8") as secret_key_file:
+            secret_key = secret_key_file.read()
 
-        if totp.verify(user_otp):
-
-            return True
-
-        else:
-
-            return False
+        return bool(pyotp.TOTP(secret_key).verify(user_otp))
 
     def verify_pass(self) -> bool:
+
+        """
+        Obtains password from the user attempting to login, hashes and
+        checks it against the server hash, and returns a boolean value
+        depending on whether the check passed or failed
+        """
+
         if self.config["password_auth_options"]["show_username"]:
-            login_prompt = "Password for {}: ".format(getpass.getuser())
+            login_prompt = f"Password for {getpass.getuser()}: "
 
         else:
             login_prompt = "Password: "
 
-        password_file = open("login/password", "rb")
-        password = password_file.read()
-        password_file.close()
+        with open("login/password", "rb") as password_file:
+            password = password_file.read()
 
         try:
             given_password = getpass.getpass(login_prompt)
 
         except (EOFError, KeyboardInterrupt):
-            self.logger.info("({}) Cancelled login".format(self.client_remote_address))
+            self.logger.info("(%s) Cancelled login", self.client_remote_address)
             print("Login cancelled.")
             sys.exit()
 
@@ -96,18 +119,18 @@ class LoginManager:
             p=1
         )
 
-        if kdf.derive(given_password.encode()) == password:
-
-            return True
-
-        else:
-
-            return False
+        return bool(kdf.derive(given_password.encode()) == password)
 
     def block(self) -> None:
-        self.logger.info("({}) Login blocked, address in user blocklist".format(self.client_remote_address))
+
+        """
+        Blocks the user attempting to login
+        """
+
+        self.logger.info("(%s) Login blocked, address in user blocklist", self.client_remote_address)
+
         if self.config["blocklist_shadow_mode"]:
-            given_password = getpass.getpass(login_prompt)
+            getpass.getpass("Password: ")
             time.sleep(3)
             print("Authentication failed.")
 
@@ -116,33 +139,35 @@ class LoginManager:
 
         sys.exit()
 
-        return
-
     def main(self) -> None:
+
+        """
+        The main function that manages everything
+        """
+
         try:
             if self.config["auto_blocklist"]:
-                auto_blocklist_file = open("blocklists/auto_blocklist.json", "r")
-                auto_blocklist = json.load(auto_blocklist_file)
-                auto_blocklist_file.close()
+                with open("blocklists/auto_blocklist.json", "r", encoding="utf-8") as auto_blocklist_file:
+                    auto_blocklist = json.load(auto_blocklist_file)
 
                 unblock = False
+
                 for entry in auto_blocklist["blocklist"].keys():
                     if entry in self.client_remote_address:
                         if int(time.time()) > auto_blocklist["blocklist"][entry]:
+                            entry_to_remove = entry
                             unblock = True
 
                         else:
                             self.block()
 
                 if unblock:
-                    del auto_blocklist["blocklist"][entry]
-                    auto_blocklist_file = open("blocklists/auto_blocklist.json", "w")
-                    json.dump(auto_blocklist, auto_blocklist_file, indent=4)
-                    auto_blocklist_file.close()
+                    del auto_blocklist["blocklist"][entry_to_remove]
+                    with open("blocklists/auto_blocklist.json", "w", encoding="utf-8") as auto_blocklist_file:
+                        json.dump(auto_blocklist, auto_blocklist_file, indent=4)
 
-            user_blocklist_file = open("blocklists/user_blocklist.json", "r")
-            user_blocklist = json.load(user_blocklist_file)
-            user_blocklist_file.close()
+            with open("blocklists/user_blocklist.json", "r", encoding="utf-8") as user_blocklist_file:
+                user_blocklist = json.load(user_blocklist_file)
 
             for entry in user_blocklist["blocklist"]:
                 if entry in self.client_remote_address:
@@ -153,17 +178,13 @@ class LoginManager:
                     logged_in = True
 
                 else:
-                    if self.verify_otp():
-                        logged_in = True
-
-                    else:
-                        logged_in = False
+                    logged_in = self.verify_otp()
 
                 if logged_in:
                     self.spawn_shell()
 
                 else:
-                    self.logger.info("({}) Failed login, incorrect otp".format(self.client_remote_address))
+                    self.logger.info("(%s) Failed login, incorrect otp", self.client_remote_address)
                     time.sleep(3)
                     print("Authentication failed.")
                     sys.exit()
@@ -174,17 +195,13 @@ class LoginManager:
                         logged_in = True
 
                     else:
-                        if self.verify_otp():
-                            logged_in = True
-
-                        else:
-                            logged_in = False
+                        logged_in = self.verify_otp()
 
                     if logged_in:
                         self.spawn_shell()
 
                     else:
-                        self.logger.info("({}) Failed login, incorrect otp".format(self.client_remote_address))
+                        self.logger.info("(%s) Failed login, incorrect otp", self.client_remote_address)
                         time.sleep(3)
                         print("Authentication failed.")
                         sys.exit()
@@ -192,29 +209,31 @@ class LoginManager:
                 else:
                     if self.config["auto_blocklist"]:
                         if self.client_remote_address in auto_blocklist["attempt_tracker"].keys():
-                            if auto_blocklist["attempt_tracker"][self.client_remote_address] < (config["auto_blocklist_options"]["max_incorrect_attemps"] - 1):
+                            if auto_blocklist["attempt_tracker"][self.client_remote_address] < (self.config["auto_blocklist_options"]["max_incorrect_attemps"] - 1):
                                 auto_blocklist["attempt_tracker"][self.client_remote_address] += 1
 
                             else:
-                                auto_blocklist["blocklist"][self.client_remote_address] = int(time.time()) + (config["auto_blocklist_options"]["unblock_after_minutes"] * 60)
+                                auto_blocklist["blocklist"][self.client_remote_address] = int(time.time()) + (self.config["auto_blocklist_options"]["unblock_after_minutes"] * 60)
                                 del auto_blocklist["attempt_tracker"][self.client_remote_address]
 
                         else:
                             auto_blocklist["attempt_tracker"][self.client_remote_address] = 1
-                        auto_blocklist_file = open("blocklists/auto_blocklist.json", "w")
-                        json.dump(auto_blocklist, auto_blocklist_file, indent=4)
-                        auto_blocklist_file.close()
+                        with open("blocklists/auto_blocklist.json", "w", encoding="utf-8") as auto_blocklist_file:
+                            json.dump(auto_blocklist, auto_blocklist_file, indent=4)
 
-                    self.logger.info("({}) Failed login, incorrect password".format(client_remote_address))
+                    self.logger.info("(%s) Failed login, incorrect password", self.client_remote_address)
                     time.sleep(3)
                     print("Authentication failed.")
                     sys.exit()
 
-        except (Exception, KeyboardInterrupt, EOFError):
+        except (KeyboardInterrupt, EOFError):
+            self.logger.info("(%s) Cancelled login", self.client_remote_address)
+            print("Login cancelled.")
+            sys.exit()
+
+        except Exception:
             self.logger.info(str(sys.exc_info()).replace("\n", " "))
             print("An error occured during login.")
-
-        return
 
 
 if __name__ == "__main__":
