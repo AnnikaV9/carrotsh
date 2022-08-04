@@ -6,7 +6,7 @@ authors = ["AnnikaV9 <carrot.moncher@gmail.com>"]
 license = "Unlicense"
 
 [tool.poetry.dependencies]
-python = "*"
+python = ">=3.7"
 pyyaml = "^6.0.0"
 pyotp = "^2.6.0"
 cryptography = "^37.0.4"
