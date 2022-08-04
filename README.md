@@ -5,7 +5,8 @@ A lightweight and secure remote access server that allows clients to connect thr
 <br />
 <br />
 
-<img src="https://user-images.githubusercontent.com/68383195/182747054-8b73e74a-77e8-4fe0-9913-28bcecd70171.gif" width="90%"></div>
+<img src="https://user-images.githubusercontent.com/68383195/182829289-85c62fe0-bafc-4f50-9abd-46f3a7ed2565.gif" width="90%">
+</div>
 
 <br />
 <br />
