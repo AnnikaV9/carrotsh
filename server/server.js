@@ -1,6 +1,6 @@
 /* 
 Backend server that connects with clients and then spawns a python
-pty process that runs ogin/login.py 
+pty process that runs login/login.py 
 */
 
 const fs = require("fs");
