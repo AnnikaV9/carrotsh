@@ -9,7 +9,7 @@ license = "Unlicense"
 python = ">=3.7"
 pyyaml = "^6.0.0"
 pyotp = "^2.8.0"
-cryptography = "^38.0.3"
+cryptography = "^39.0.1"
 
 [tool.poetry.dev-dependencies]
 
