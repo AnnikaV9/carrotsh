@@ -38,7 +38,7 @@ carrotsh is a lightweight and secure remote access server that uses the [websock
  
  <br />
  
-[Try the interactive demo](https://carrotsh.herokuapp.com)
+[~~Try the interactive demo~~](https://carrotsh.herokuapp.com) (Currently down)
 
 <br />
 <br />
