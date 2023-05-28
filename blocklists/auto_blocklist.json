@@ -1,4 +1,6 @@
 {
-    "attempt_tracker": {},
+    "attempt_tracker": {
+        "::1": 1
+    },
     "blocklist": {}
 }

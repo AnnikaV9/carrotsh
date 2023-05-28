@@ -4,3 +4,5 @@ password
 .venv
 pm2_logs
 logins.log
+commands/__pycache__
+csh/__pycache__
